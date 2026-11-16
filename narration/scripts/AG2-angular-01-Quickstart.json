@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the Angular quickstart page in the CopilotKit docs, for AG2, and I have implemented this page in my project."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, with the doc's chat component and app config. Umm, the backend file and the runtime server here, I had to write those myself, because the page never shows them."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked if it's connected, and it replied with a fun fact about kites. But that answer only works through my own AG2 backend and runtime, not anything from the page."
+   "text": "Ok so this is the quickstart page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The connect the backend step is just this callout, uh, there's no AG2 code at all."
+   "text": "So this is the problem, the backend step is just this callout, no code."
   },
   {
    "at": "evidence#2",
-   "text": "And this step says start the backend and runtime with the commands from its guide, but no page has those commands."
+   "text": "And no page gives the commands to start the agent and the runtime."
   },
   {
-   "at": "notepad",
-   "text": "So basically, the step for the AG2 backend is just a callout, no code. There's no AG2 agent, no runtime server, and the at ag-ui slash client package isn't in the install step. Umm, the runtime page it links only has a Next JS route with an example agent."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "So following this page, the chat has nothing to talk to. So yeah, this is the issue, kindly fix it."
+   "text": "This part, the AG2 agent and the runtime server, wasn't on the page, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. Following the page, the chat should talk to an AG2 agent, but umm, there's nothing behind it, it only works with my own backend."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says connect your AG2 backend, but it never shows one."
+  },
+  {
+   "at": "+",
+   "text": "There's no AG2 agent, no runtime server, and the ag-ui client install is missing, so you have to guess all of it."
+  },
+  {
+   "at": "+",
+   "text": "That's it for this one, kindly look into this issue."
   }
  ]
 }

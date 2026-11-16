@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. It should render a product card, but uh, the agent just wrote HTML code as text.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 8.916,
+ "file": "c20d71506a1b20f3ee701685fbf5df9b.mp3",
+ "clip": "AG2-angular-04-NativeGenerativeUi",
+ "at": "demo"
+}

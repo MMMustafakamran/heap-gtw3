@@ -3,31 +3,35 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the shared state and agent context page in the CopilotKit docs, for AG2 with Angular, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the workspace component and the account context."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I marked the priority as high, and it shows high on the page. Then I asked the agent what the priority is, and umm, it said it doesn't see any priority."
+   "text": "Ok so this is the shared state page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. It says the agent and the app both read and write the value."
+   "text": "So this is the problem, it says the agent and the app both read and write the value."
   },
   {
    "at": "evidence#2",
-   "text": "And this set state call is the write, uh, but the agent can't read it."
+   "text": "And this is the set state call the agent never sees."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. I set the priority to high, the agent should know it, but umm, it says it doesn't see any priority."
   },
   {
    "at": "notepad",
-   "text": "So basically, every time I tried, the agent couldn't see the priority. AG2 does copy the state into the agent's variables, but umm, nothing puts it in the prompt, and the page never shows how an AG2 agent reads it."
+   "text": "So basically, the page says the agent can read the state the app writes, but it never can."
   },
   {
    "at": "+",
-   "text": "That's it for this one, kindly look into this issue."
+   "text": "The page doesn't show any AG2 code for reading that state."
+  },
+  {
+   "at": "+",
+   "text": "So this needs a fix, kindly check it."
   }
  ]
 }

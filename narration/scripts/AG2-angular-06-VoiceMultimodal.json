@@ -3,27 +3,31 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the voice and multimodal input page in the CopilotKit docs, for AG2 with Angular, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the code from the doc, the chat with attachments, and the runtime server."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I attached a chart and asked about it, and the agent read the title and the Q4 value fine. But umm, there's no mic button in the chat at all."
+   "text": "Ok so this is the voice and multimodal page for AG2 with Angular, and I'm reporting a small issue on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. It says follow the voice backend setup, and that link just goes to a backend section on this same page, uh, which doesn't exist."
+   "text": "So this is the problem, this link to the voice backend setup goes nowhere."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. The main part works, the agent read the chart I attached, but uh, there's no mic button in the chat."
   },
   {
    "at": "notepad",
-   "text": "So attachments work, but voice can't be set up. The transcription route is never shown anywhere, so the runtime reports transcription disabled, and the chat hides the mic."
+   "text": "So basically, the page says follow the voice backend setup, but that link points to a section that isn't on the page."
   },
   {
    "at": "+",
-   "text": "So this needs a fix, kindly check it."
+   "text": "The transcription route is never shown, so voice is off and the mic stays hidden."
+  },
+  {
+   "at": "+",
+   "text": "So kindly look into it."
   }
  ]
 }

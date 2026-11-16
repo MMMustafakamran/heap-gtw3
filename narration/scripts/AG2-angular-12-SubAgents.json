@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the sub-agents page in the CopilotKit docs, for AG2 with Angular, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact Python file from the doc."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked it to research, write, and critique. The chat answered from my plain agent, but umm, the delegation log stayed empty, because the doc's agent file can't even be imported."
+   "text": "Ok so this is the sub-agents page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc, in the code tab. It imports loop cap from a local module, uh, that's never shown."
+   "text": "So this is the problem, the agent file imports loop cap, which is never shown."
   },
   {
    "at": "evidence#2",
-   "text": "Same with publish state."
+   "text": "Same with the state module here."
   },
   {
    "at": "evidence#3",
-   "text": "And on the Angular side, these helpers are never defined."
+   "text": "And these renderer helpers are, uh, never defined."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "+",
+   "text": "This part, the Angular host component for the demo, wasn't on the page, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should delegate to sub-agents, but umm, the delegation log stays empty, it's just the plain agent answering."
   },
   {
    "at": "notepad",
-   "text": "So the Python file fails with module not found for loop cap. The code tab's frontend files are React, not Angular, umm, and read delegations and the renderer config are missing. So no sub-agents ever run, and the log stays empty."
+   "text": "So basically, the page says this is the full sub-agents setup, but the Python fails with module not found."
+  },
+  {
+   "at": "+",
+   "text": "Two modules are missing, and the frontend code in the code tab is React, not Angular."
   },
   {
    "at": "+",

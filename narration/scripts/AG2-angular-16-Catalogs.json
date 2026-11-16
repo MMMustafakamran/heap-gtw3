@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the catalogs page in the CopilotKit docs, for AG2, with the Angular tab, and I have implemented this code."
-  },
-  {
-   "at": "ide",
-   "text": "This is my project, this is the exact code from the doc, the shop catalog and the app config."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for three running shoes as product cards, and umm, it just gave me HTML code as text, no product cards rendered."
+   "text": "Ok so this is the catalogs page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The catalog imports come from this entry point."
+   "text": "So this is the problem, create generative UI comes from a missing entry point."
   },
   {
    "at": "evidence#2",
-   "text": "And cart UI here is never defined."
+   "text": "And cart UI and hero here are, umm, never defined."
   },
   {
-   "at": "notepad",
-   "text": "So create generative UI comes from copilotkit angular slash generative UI, which isn't in the latest package. Cannot find module, so the app doesn't build. And uh, cart UI and hero in the combine example are never shown."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "So yeah, kindly check this and fix it."
+   "text": "This part, the generative UI import, wasn't in the snippet, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should render product cards, but uh, I just got HTML code as text."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says build your own catalog, but the function it uses isn't in the angular package."
+  },
+  {
+   "at": "+",
+   "text": "So the app won't build, and the combine example uses pieces it never shows."
+  },
+  {
+   "at": "+",
+   "text": "Alright, that's the issue, kindly sort it out."
   }
  ]
 }

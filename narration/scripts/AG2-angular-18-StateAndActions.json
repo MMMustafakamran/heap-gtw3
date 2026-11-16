@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the state and actions page in the CopilotKit docs, for AG2, with the Angular tab, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the shop catalog, the product card and the cart actions."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for a product card with an add to cart button, and uh, the agent just wrote HTML as text. No card, no add to cart button."
+   "text": "Ok so this is the state and actions page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The state helper is imported from here."
+   "text": "So this is the problem, the state helpers come from a missing entry point."
   },
   {
    "at": "evidence#2",
-   "text": "And this cart store file is never shown."
+   "text": "And the cart store file is, umm, never shown."
   },
   {
-   "at": "notepad",
-   "text": "So connect generative UI state and register generative UI function come from an entry point that doesn't exist in the latest Angular package. Cannot find module. And the cart store is imported but never shown anywhere."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "So yeah, that's broken right now, kindly have a look."
+   "text": "This part, the zod import, wasn't in the snippet, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should show a product card with add to cart, but uh, the agent just wrote HTML as text."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says connect the UI state and actions, but those functions aren't in the angular package."
+  },
+  {
+   "at": "+",
+   "text": "So the app won't build, and the cart store it imports isn't on the page."
+  },
+  {
+   "at": "+",
+   "text": "So yeah, kindly have a look at this one."
   }
  ]
 }

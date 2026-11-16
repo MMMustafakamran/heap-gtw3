@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the page says the agent can read the state the app writes, but it never can.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 6.78,
+ "file": "14e812bc12f53838f0e7069a48c360c9.mp3",
+ "clip": "AG2-angular-08-SharedState",
+ "at": "notepad"
+}

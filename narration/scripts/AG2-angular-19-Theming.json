@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the theming page in the CopilotKit docs, for AG2, on the Angular tab, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the theme config and the theme type."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for a card with a buy now button, and the agent just gave me JSX text. Umm, no standard component rendered, so there's nothing to theme."
+   "text": "Ok so this is the theming page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The whole theme goes on this provider."
+   "text": "So this is the problem, theming is just this provider."
   },
   {
    "at": "evidence#2",
-   "text": "And the theme type comes from the same entry point."
+   "text": "And the theme type comes from, umm, a missing entry point."
   },
   {
-   "at": "notepad",
-   "text": "So both of these come from copilotkit angular slash generative UI, which isn't in the latest package. Cannot find module, so uh, the app won't build and the theme never applies."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "Umm, so that's this page, please fix it when you can."
+   "text": "This part, the import, I took from the components page, since this snippet has none."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should render themed components, but uh, nothing renders, so there's nothing to theme."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says pass a theme to the provider, but the provider isn't in the angular package."
+  },
+  {
+   "at": "+",
+   "text": "So the app won't build, and no components show up at all."
+  },
+  {
+   "at": "+",
+   "text": "That's the issue, please get it fixed."
   }
  ]
 }

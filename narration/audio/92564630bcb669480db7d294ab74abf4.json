@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. I set the priority to high, the agent should know it, but umm, it says it doesn't see any priority.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 8.731,
+ "file": "92564630bcb669480db7d294ab74abf4.mp3",
+ "clip": "AG2-angular-08-SharedState",
+ "at": "demo"
+}

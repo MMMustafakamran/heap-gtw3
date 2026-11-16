@@ -1,0 +1,9 @@
+{
+ "text": "So basically, the page says drop in the surface component, but the generative UI entry point it imports doesn't exist in the angular package.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 10.588,
+ "file": "e2743896df67067a26c8197aa0c64338.mp3",
+ "clip": "AG2-angular-15-Surfaces",
+ "at": "notepad"
+}

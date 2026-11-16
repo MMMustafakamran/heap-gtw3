@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. It should render A2UI blocks, but uh, the agent just wrote HTML code as text.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 9.009,
+ "file": "5d4ede04ee09137b1cb5d575e7112b9b.mp3",
+ "clip": "AG2-angular-21-MarkdownMode",
+ "at": "demo"
+}

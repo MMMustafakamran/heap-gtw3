@@ -3,27 +3,35 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the surfaces page in the CopilotKit docs, for AG2, on the Angular tab, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the surface and the error setup."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for some cheap running shoes, and the agent just wrote them out as text. Uh, no surface, no product cards, nothing rendered on the page."
+   "text": "Ok so this is the surfaces page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The surface component is imported from here."
+   "text": "So this is the problem, the surface comes from an entry point that doesn't exist."
   },
   {
    "at": "evidence#2",
-   "text": "And this product type is never defined anywhere."
+   "text": "And the product types are, umm, never defined."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "+",
+   "text": "This part, the generative UI import, wasn't in the snippet, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should render the shoes on a surface, but uh, the agent just wrote them as text."
   },
   {
    "at": "notepad",
-   "text": "So that generative UI entry point isn't in the latest Angular package, typescript says cannot find module, and ng serve fails. Product and product row are never shown either, so umm, this page can't work as written."
+   "text": "So basically, the page says drop in the surface component, but the generative UI entry point it imports doesn't exist in the angular package."
+  },
+  {
+   "at": "+",
+   "text": "So the app won't build, and product and product row are never shown either."
   },
   {
    "at": "+",

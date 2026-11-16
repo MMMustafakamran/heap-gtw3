@@ -3,31 +3,35 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the components and surfaces page in the CopilotKit docs, for AG2, with the Angular tab, and I have implemented this page in my project."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the app config, the runtime server, the app component."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I sent the plans table prompt from the page, and umm, nothing came back at all, the chat just stays empty. The agent run fails every time, and no generated UI can render either."
+   "text": "Ok so this is the components and surfaces page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. This import is where the provider comes from."
+   "text": "So this is the problem, this import from the generative UI entry point."
   },
   {
    "at": "evidence#2",
-   "text": "Then the page says start the runtime with npx tsx server dot ts."
+   "text": "Then it says start the runtime with tsx, umm, which crashes in an Angular app."
   },
   {
    "at": "evidence#3",
-   "text": "And this chat call is the whole agent."
+   "text": "And this chat call has no thread ID."
+  },
+  {
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. The chat should reply, but uh, it never replies at all."
   },
   {
    "at": "notepad",
-   "text": "So basically, the generative UI entry point doesn't exist in the latest Angular package, so the app won't build. The server file crashes under tsx in an Angular app, because the TanStack packages are ESM only. And uh, even after renaming it, every run fails with chat needs a thread ID."
+   "text": "So basically, the page says set up the provider and the runtime, but the import doesn't exist, so the app won't build."
+  },
+  {
+   "at": "+",
+   "text": "The server crashes under tsx, and even after renaming it, every run fails with chat needs a thread ID."
   },
   {
    "at": "+",

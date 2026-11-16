@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the adopt from A2UI page in the CopilotKit docs, for AG2, with the Angular tab, and I have implemented this page."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the after catalog and the after config."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for the JFK to LHR route with airport components, and uh, the agent just wrote React code as text. Nothing rendered."
+   "text": "Ok so this is the adopt from A2UI page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. The after catalog imports from this entry point."
+   "text": "So this is the problem, the after catalog imports a missing entry point."
   },
   {
    "at": "evidence#2",
-   "text": "And the airport component is never shown."
+   "text": "And the airport component is, uh, never shown."
   },
   {
-   "at": "notepad",
-   "text": "So create generative UI and standard UI come from an entry point that isn't in the latest Angular package. Cannot find module. Airport and arrow are never shown, and zod isn't imported, so umm, you can't migrate at all."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "Alright, so please look into this one and fix it."
+   "text": "This part, the app config wrapper and the import, wasn't on the page, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should render with the new engine, but umm, the agent just wrote React code as text."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says move your catalog to the new engine, but that engine isn't in the angular package."
+  },
+  {
+   "at": "+",
+   "text": "So the app won't build, and the airport and arrow components are never shown."
+  },
+  {
+   "at": "+",
+   "text": "Alright, kindly look into this and fix it."
   }
  ]
 }

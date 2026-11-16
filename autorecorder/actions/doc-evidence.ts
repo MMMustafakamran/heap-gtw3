@@ -254,7 +254,9 @@ export async function showFinding(
   note: string | undefined,
   fileName = `finding-${config.id}.txt`,
 ): Promise<void> {
-  await showDocEvidence(page, config, items).catch((e) => console.warn(`   ⚠️ Doc evidence step failed: ${String(e).slice(0, 120)}`));
+  // The doc evidence is highlighted in the doc step now (core/doc-evidence.ts, registered in
+  // ag2.actions.ts), before the IDE. Nothing is highlighted here after the demo any more.
+  void items;
   if (!note) return;
   mark('notepad');
   await openNotepad(page, fileName);

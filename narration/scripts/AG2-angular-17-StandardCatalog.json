@@ -3,31 +3,39 @@
  "segments": [
   {
    "at": "doc",
-   "text": "Ok so, this is the standard catalog page in the CopilotKit docs, on the Angular tab, and I have implemented this page in my project."
-  },
-  {
-   "at": "ide",
-   "text": "So this is my project, this is the exact code from the doc, the app config and the card override."
-  },
-  {
-   "at": "demo",
-   "text": "Moving on to the demo. So I asked for a card with the title hello, and the agent just replied with JSX code as text. Umm, no card component showed up."
+   "text": "Ok so this is the standard catalog page for AG2 with Angular, and I'm reporting a problem on this page."
   },
   {
    "at": "evidence",
-   "text": "Back on the doc. Use it as it is, with this import."
+   "text": "So this is the problem, this import doesn't exist in the package."
   },
   {
    "at": "evidence#2",
-   "text": "And this product card and product schema are never defined."
+   "text": "And product card and its schema are, uh, never defined."
   },
   {
-   "at": "notepad",
-   "text": "So both provide generative UI and standard UI come from an entry point that isn't in the latest Angular package. Typescript says cannot find module, so ng serve won't build, and none of the sixty nine components can render."
+   "at": "ide",
+   "text": "This is my project, I've implemented the exact code from the doc."
   },
   {
    "at": "+",
-   "text": "Okay, so that's the issue, please get it fixed."
+   "text": "This part, the app config wrapper around the snippet, wasn't on the page, so I had to add it myself."
+  },
+  {
+   "at": "demo",
+   "text": "Moving on to the demo. It should render a card, but umm, I got JSX code as text."
+  },
+  {
+   "at": "notepad",
+   "text": "So basically, the page says use the standard catalog as it is, but the import doesn't exist, so ng serve won't build."
+  },
+  {
+   "at": "+",
+   "text": "And the add your own example uses a card it never shows."
+  },
+  {
+   "at": "+",
+   "text": "So yeah, kindly check this and fix it."
   }
  ]
 }
