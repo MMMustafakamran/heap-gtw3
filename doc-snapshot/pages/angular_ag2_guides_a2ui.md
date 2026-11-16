@@ -142,7 +142,7 @@ their nested elements receive the same rules:
   padding: 1rem;
   border: 1px solid var(--line);
   border-radius: 0.9rem;
-  background: white;
+  background: light-dark(white, #191a1e);
   box-shadow: 0 8px 22px -18px rgb(15 23 42 / 0.4);
 }
 
@@ -154,7 +154,7 @@ their nested elements receive the same rules:
 
 .a2ui-metric > span,
 .a2ui-metric > small {
-  color: var(--muted);
+  color: light-dark(var(--muted), #adadb2);
   font-size: 0.75rem;
 }
 
@@ -168,22 +168,22 @@ their nested elements receive the same rules:
   width: fit-content;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  background: #eef2ff;
+  background: light-dark(#eef2ff, rgb(30 27 75 / 40%));
   font-size: 0.75rem;
   font-weight: 700;
 }
 
 .a2ui-status-success {
-  background: #dcfce7;
-  color: #166534;
+  background: light-dark(#dcfce7, rgb(5 46 22 / 40%));
+  color: light-dark(#166534, #86efac);
 }
 .a2ui-status-warning {
-  background: #fef3c7;
-  color: #92400e;
+  background: light-dark(#fef3c7, rgb(69 26 3 / 40%));
+  color: light-dark(#92400e, #fcd34d);
 }
 .a2ui-status-error {
-  background: #fee2e2;
-  color: #991b1b;
+  background: light-dark(#fee2e2, rgb(69 10 10 / 40%));
+  color: light-dark(#991b1b, #fca5a5);
 }
 ```
 

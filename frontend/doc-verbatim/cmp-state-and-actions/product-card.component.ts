@@ -25,6 +25,6 @@ export class ProductCard {
 
   protected async add(addToCart: GenerativeUIEventHandler<typeof shopUI, "onAddToCart">) {
     const result = await addToCart({ productId: this.productId() });
-    if (!result.ok) this.error.set(result.error.message);
+    this.error.set(result.ok ? undefined : result.error.message);
   }
 }

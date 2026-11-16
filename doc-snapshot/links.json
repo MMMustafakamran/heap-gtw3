@@ -1,6 +1,6 @@
 {
  "root": "angular/ag2",
- "savedAt": "2026-11-08",
+ "savedAt": "2026-11-16",
  "pages": {
   "/angular/ag2/build-with-agents": [],
   "/angular/ag2/webmcp": [
@@ -121,6 +121,15 @@
    "/angular/ag2/generative-ui/components/theming",
    "/angular/ag2/generative-ui/components/transports",
    "/angular/ag2/guides/a2ui"
-  ]
+  ],
+  "/ag2/generative-ui/components/markdown-mode": [],
+  "/ag2/generative-ui/components": [],
+  "/ag2/generative-ui/components/catalogs": [],
+  "/ag2/generative-ui/components/state-and-actions": [],
+  "/ag2/generative-ui/components/from-a2ui": [],
+  "/ag2/generative-ui/components/surfaces": [],
+  "/ag2/generative-ui/components/theming": [],
+  "/ag2/generative-ui/components/transports": [],
+  "/generative-ui/components/standard-catalog": []
  }
 }

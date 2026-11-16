@@ -3,6 +3,19 @@
 What the CopilotKit Angular + AG2 docs changed under this repo.
 Only pages that actually moved are recorded — a sync that finds everything unchanged writes nothing here at all.
 
+## 2026-11-16 (guides/a2ui, https://docs.copilotkit.ai/ag2/generative-ui/components, https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs, https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui, https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode, https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions, https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces, https://docs.copilotkit.ai/ag2/generative-ui/components/theming, https://docs.copilotkit.ai/ag2/generative-ui/components/transports, https://docs.copilotkit.ai/generative-ui/components/standard-catalog)
+
+- guides/a2ui: HIGH code (+9 / -9)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui: HIGH code, structure (+79 / -6)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode: HIGH code, structure, banner (+30 / -2)
+- https://docs.copilotkit.ai/ag2/generative-ui/components: HIGH code, install, structure (+506 / -12)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs: HIGH code, structure (+224 / -8)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions: HIGH code, structure, banner (+235 / -12)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces: HIGH code, structure (+230 / -13)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/theming: HIGH code, structure (+50 / -3)
+- https://docs.copilotkit.ai/generative-ui/components/standard-catalog: HIGH code, structure (+62 / -5)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/transports: HIGH code, structure, banner (+40 / -7)
+
 ## 2026-11-09
 
 - Components and surfaces (Declarative), Angular tab, announced by the team: 9 pages saved by hand
