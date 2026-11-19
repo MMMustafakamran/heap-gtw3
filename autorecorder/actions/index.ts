@@ -19,6 +19,9 @@ import {
   runSharedStateAction,
   runSubagentsAction,
   runVoiceAction,
+  runMultimodalAttachmentsAction,
+  runAgentReadonlyAction,
+  runThreadsDrawerAction,
 } from './ag2.actions';
 
 /** Keys are page ids from `config/pages.config.ts`. Doctor flags any orphans. */
@@ -42,6 +45,9 @@ export const ACTION_MAP: Record<string, PageActionHandler> = {
   'cmp-transports': runComponentsAction,
   'cmp-markdown-mode': runComponentsAction,
   'cmp-from-a2ui': runComponentsAction,
+  'multimodal-attachments': runMultimodalAttachmentsAction,
+  'agent-readonly': runAgentReadonlyAction,
+  'threads-drawer': runThreadsDrawerAction,
 };
 
 export async function executePageAction(

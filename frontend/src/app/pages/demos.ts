@@ -22,6 +22,8 @@ import { VoiceChatComponent } from '../features/media/voice-chat.component';
 import { QuickstartChat } from '../features/quickstart/quickstart-chat';
 import { SharedStateChatComponent } from '../features/shared-state/shared-state-chat.component';
 import { ThreadsDemoComponent } from '../features/threads/threads-demo.component';
+import { AgentReadonlyChatComponent } from '../features/shared-state/agent-readonly-chat.component';
+import { ThreadsDrawerDemoComponent } from '../features/threads/threads-drawer-demo.component';
 import { ToolsChatComponent } from '../features/tools/tools-chat.component';
 
 @Component({
@@ -111,6 +113,34 @@ export class MemoryDemo {}
   ></app-demo-frame>`,
 })
 export class AttachmentsDemo {}
+
+// HARNESS: demo hosts for Multimodal Attachments, Agent Read-Only Context, Threads Drawer (2026-11-19).
+@Component({
+  selector: 'app-multimodal-attachments-demo',
+  imports: [DemoFrame, MediaChatComponent],
+  template: `<app-demo-frame backTo="/multimodal-attachments"
+    ><div style="height: 100%"><app-media-chat /></div
+  ></app-demo-frame>`,
+})
+export class MultimodalAttachmentsDemo {}
+
+@Component({
+  selector: 'app-agent-readonly-demo',
+  imports: [DemoFrame, AgentReadonlyChatComponent],
+  template: `<app-demo-frame backTo="/agent-readonly"
+    ><app-agent-readonly-chat
+  /></app-demo-frame>`,
+})
+export class AgentReadonlyDemo {}
+
+@Component({
+  selector: 'app-threads-drawer-demo-page',
+  imports: [DemoFrame, ThreadsDrawerDemoComponent],
+  template: `<app-demo-frame backTo="/threads-drawer"
+    ><app-threads-drawer-demo
+  /></app-demo-frame>`,
+})
+export class ThreadsDrawerDemo {}
 
 @Component({
   selector: 'app-headless-demo',

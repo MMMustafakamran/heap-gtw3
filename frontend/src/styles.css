@@ -286,21 +286,6 @@ td > code {
   font-weight: 700;
 }
 
-/* chat ui : scope css changes start */
-.support-chat .copilotKitUserMessage {
-  color: white;
-  background: #2563eb;
-  border-radius: 0.75rem;
-}
-
-.support-chat .copilotKitAssistantMessage {
-  padding: 0.75rem;
-  color: #172554;
-  background: #eff6ff;
-  border-radius: 0.75rem;
-}
-/* chat ui : scope css changes end */
-
 /* a2ui : style rendered components start */
 .a2ui-row {
   display: flex;

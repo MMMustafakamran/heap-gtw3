@@ -1,15 +1,16 @@
 /**
- * Harness wrapper mounting both thread surfaces from the guide: the hand-built
- * list on `injectThreads`, and the drop-in drawer beside a chat.
+ * Harness wrapper for the Headless Threads page (2026-11-19): the hand-built list on
+ * `injectThreads` and the "Resume a specific thread" chat. The drawer moved to the
+ * Threads Drawer page (conversations.component.ts kept on disk, no longer mounted here).
  */
 import { Component } from '@angular/core';
 
-import { ConversationsComponent } from './conversations.component';
+import { ResumeChatComponent } from './resume-chat.component';
 import { ThreadListComponent } from './thread-list.component';
 
 @Component({
   selector: 'app-threads-demo',
-  imports: [ThreadListComponent, ConversationsComponent],
+  imports: [ThreadListComponent, ResumeChatComponent],
   template: `
     <div class="flex h-full flex-col gap-4 p-4">
       <section class="rounded-lg border border-slate-200 bg-white p-4">
@@ -23,10 +24,10 @@ import { ThreadListComponent } from './thread-list.component';
         class="flex min-h-0 flex-1 flex-col rounded-lg border border-slate-200 bg-white p-4"
       >
         <h2 class="mb-2 text-sm font-semibold text-slate-900">
-          CopilotThreadsDrawer + chat
+          Resume a specific thread
         </h2>
         <div class="flex min-h-0 flex-1 gap-4">
-          <app-conversations />
+          <app-resume-chat />
         </div>
       </section>
     </div>

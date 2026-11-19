@@ -1,15 +1,14 @@
-# Chat UI and customization
+# Prebuilt Components
 
-> Add a full Angular chat, choose its layout, and customize messages, slots, labels, and styles.
+> Add a full Angular chat and choose its layout, inline, popup, or sidebar.
 
 `CopilotChat` gives you a complete chat surface backed by the agent from your
 Copilot Runtime. It owns message streaming, suggestions, the composer,
 attachments, transcription, and the active thread.
 
-This guide starts from the provider in the [Angular quickstart](/angular/ag2) and
-shows how to choose and customize the visible chat.
+You need the provider from the [Angular quickstart](/angular).
 
-## Choose a chat surface
+## Choose a chat surface [#choose-a-chat-surface]
 
 | Surface | Use it when |
 | --- | --- |
@@ -20,7 +19,7 @@ shows how to choose and customize the visible chat.
 
 All four are standalone Angular components.
 
-## Add an inline chat
+## Add an inline chat [#add-an-inline-chat]
 
 Import `CopilotChat`, give its host a real height, and point it at an agent when
 you do not want the default agent.
@@ -56,7 +55,7 @@ Import the package stylesheet once in the application's global stylesheet:
 @import "@copilotkit/angular/styles.css";
 ```
 
-## Use a popup or sidebar
+## Use a popup or sidebar [#use-a-popup-or-sidebar]
 
 Both modal surfaces manage focus, Escape closing, and launcher-focus restore.
 Their `open` model supports two-way binding.
@@ -93,85 +92,14 @@ export class AppComponent {
 Compact viewports render the sidebar as a modal even when `mode` is `"docked"`.
 Only one open docked sidebar can own the page margin at a time.
 
-## Replace an assistant message
+Run `npm start` and open the app. Click the popup launcher button. The popup
+opens, and a message you send gets its reply in the popup.
 
-Pass a standalone component class to `assistantMessageComponent`. CopilotKit
-creates it for each assistant message and binds its `message` input.
+## Next steps [#next-steps]
 
-```ts title="src/app/custom-assistant-message.component.ts"
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
-
-type AssistantMessage = {
-  id: string;
-  role: "assistant";
-  content?: string;
-};
-
-@Component({
-  selector: "app-custom-assistant-message",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <article class="answer">
-      <span class="answer__label">Assistant</span>
-      <p>{{ message().content }}</p>
-    </article>
-  `,
-})
-export class CustomAssistantMessageComponent {
-  readonly message = input.required<AssistantMessage>();
-}
-```
-
-```ts title="src/app/support-chat.component.ts"
-import { Component } from "@angular/core";
-import { CopilotChat } from "@copilotkit/angular";
-import { CustomAssistantMessageComponent } from "./custom-assistant-message.component";
-
-@Component({
-  selector: "app-support-chat",
-  imports: [CopilotChat],
-  template: `
-    <copilot-chat
-      [assistantMessageComponent]="assistantMessageComponent"
-      assistantMessageClass="support-answer"
-    />
-  `,
-})
-export class SupportChatComponent {
-  protected readonly assistantMessageComponent =
-    CustomAssistantMessageComponent;
-}
-```
-
-`CopilotChat` also accepts component or template slots for reasoning messages,
-the composer, and content after the transcript. Use `CopilotChatView` directly
-when you need its scroll view, disclaimer, feather, input-container, or
-scroll-to-bottom slots.
-
-## Scope CSS changes
-
-The package stylesheet exposes stable chat classes. Put a scope class on your
-feature host so the change stays local.
-
-```css title="src/styles.css"
-.support-chat .copilotKitUserMessage {
-  color: white;
-  background: #2563eb;
-  border-radius: 0.75rem;
-}
-
-.support-chat .copilotKitAssistantMessage {
-  padding: 0.75rem;
-  color: #172554;
-  background: #eff6ff;
-  border-radius: 0.75rem;
-}
-```
-
-## Next steps
-
+- [Slots](/angular/custom-look-and-feel/slots): replace an assistant message or another part of the chat.
+- [CSS customization](/angular/custom-look-and-feel/css): restyle the chat classes.
 - [CopilotChat API](/reference/angular/components/CopilotChat)
 - [CopilotChatView slots](/reference/angular/components/CopilotChatView)
 - [CopilotPopup API](/reference/angular/components/CopilotPopup)
 - [CopilotSidebar API](/reference/angular/components/CopilotSidebar)
-- [Runnable chat examples](/angular/ag2/features#agentic-chat)

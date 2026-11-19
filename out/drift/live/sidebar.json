@@ -1,0 +1,155 @@
+{
+ "root": "angular/ag2",
+ "pages": [
+  {
+   "url": "/angular/ag2",
+   "name": "Quickstart",
+   "group": "Search⌘K"
+  },
+  {
+   "url": "/angular/ag2/build-with-agents",
+   "name": "Build with agents",
+   "group": "Search⌘K"
+  },
+  {
+   "url": "/angular/ag2/intelligence/overview",
+   "name": "Intelligence",
+   "group": "Search⌘K"
+  },
+  {
+   "url": "/angular/ag2/frontend-tools",
+   "name": "Frontend Tools",
+   "group": "Basics > Threads"
+  },
+  {
+   "url": "/angular/ag2/generative-ui",
+   "name": "Overview",
+   "group": "Generative UI"
+  },
+  {
+   "url": "/angular/ag2/webmcp",
+   "name": "WebMCP",
+   "group": "Interactivity > Human-in-the-loop"
+  },
+  {
+   "url": "/angular/ag2/multi-agent/subagents",
+   "name": "Sub-agents",
+   "group": "Agent capabilities"
+  },
+  {
+   "url": "/angular/ag2/telemetry",
+   "name": "Open-source telemetry",
+   "group": "Other > Troubleshooting"
+  },
+  {
+   "url": "/angular/ag2/community-frameworks",
+   "name": "Community frameworks",
+   "group": "Other > Troubleshooting"
+  },
+  {
+   "url": "/angular/ag2/prebuilt-components",
+   "name": "Prebuilt Components",
+   "group": "Basics > Chat"
+  },
+  {
+   "url": "/angular/ag2/multimodal-attachments",
+   "name": "Multimodal Attachments",
+   "group": "Basics > Custom Look and Feel"
+  },
+  {
+   "url": "/angular/ag2/voice",
+   "name": "Voice",
+   "group": "Basics > Custom Look and Feel"
+  },
+  {
+   "url": "/angular/ag2/human-in-the-loop",
+   "name": "HITL Overview",
+   "group": "Interactivity > Human-in-the-loop"
+  },
+  {
+   "url": "/angular/ag2/generative-ui/a2ui",
+   "name": "A2UI",
+   "group": "Generative UI > Declarative"
+  },
+  {
+   "url": "/angular/ag2/shared-state",
+   "name": "Shared State",
+   "group": "Interactivity > Shared state"
+  },
+  {
+   "url": "/angular/ag2/shared-state/agent-readonly",
+   "name": "Agent Read-Only Context",
+   "group": "Interactivity > Shared state"
+  },
+  {
+   "url": "/angular/ag2/prebuilt-components/copilot-threads-drawer",
+   "name": "Threads Drawer",
+   "group": "Basics > Threads"
+  },
+  {
+   "url": "/angular/ag2/headless-threads",
+   "name": "Headless Threads",
+   "group": "Basics > Threads"
+  },
+  {
+   "url": "/angular/ag2/backend/copilot-runtime",
+   "name": "Copilot Runtime",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/runtime-endpoints",
+   "name": "Runtime HTTP endpoints",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/custom-agent",
+   "name": "Use any model router",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/custom-ag-ui-agent",
+   "name": "Write your own AG-UI agent",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/agent-runner",
+   "name": "AgentRunner and persistence",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/message-history",
+   "name": "Message history",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/self-managed-agents",
+   "name": "Self-managed agents",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/backend/ag-ui",
+   "name": "Connect AG-UI agents",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/runtime-server-adapter",
+   "name": "Deploy to any runtime",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/auth",
+   "name": "Authentication",
+   "group": "Backend > Runtime"
+  },
+  {
+   "url": "/angular/ag2/inspector",
+   "name": "Inspector",
+   "group": "Backend > Debugging"
+  },
+  {
+   "url": "/angular/ag2/vs-code-extension",
+   "name": "VS Code Extension",
+   "group": "Backend > Debugging"
+  }
+ ]
+}

@@ -7,14 +7,17 @@
  */
 import { definePages } from '../core/types';
 
-export const SKIP_RECORDING: Record<string, string> = {};
+export const SKIP_RECORDING: Record<string, string> = {
+  'generative-ui-components': 'overview, no code (2026-11-19)',
+};
 
 const PKG = { filePath: 'frontend/package.json', startLine: 20, endLine: 40 };
 /** Installed versions (scripts/write-versions.mjs, written after the final install in each CI job). */
 const VERSIONS = { filePath: 'frontend/VERSIONS.md', startLine: 6, endLine: 20 };
 const RUNTIME = { filePath: 'frontend/server.ts', startLine: 29, endLine: 52 };
 /** The docs site's persisted framework tab (localStorage), so the doc opens on Angular. */
-const ANGULAR_TAB = { 'shell-docs.tab.frontend_framework': 'angular' };
+// HARNESS: the docs site renamed its persisted tab key to 'frontend_framework' (seen 2026-11-19); old key kept too.
+const ANGULAR_TAB = { 'shell-docs.tab.frontend_framework': 'angular', frontend_framework: 'angular' };
 const AGENT = { filePath: 'backend/main.py', startLine: 149, endLine: 178 };
 
 export const PAGES = definePages([
@@ -22,7 +25,8 @@ export const PAGES = definePages([
     id: 'quickstart',
     name: 'Quickstart (Angular)',
     videoName: 'Quickstart',
-    docPath: 'quickstart',
+    // HARNESS: since 2026-11-19 the sidebar's Quickstart links to the section root /angular/ag2 (same content as /quickstart).
+    docPath: 'https://docs.copilotkit.ai/angular/ag2',
     route: 'quickstart',
     ideFile: 'frontend/src/app/features/quickstart/quickstart-chat.ts',
     startLine: 1,
@@ -41,7 +45,7 @@ export const PAGES = definePages([
     id: 'chat-ui',
     name: 'Chat UI and customization',
     videoName: 'ChatUi',
-    docPath: 'guides/chat-ui',
+    docPath: 'prebuilt-components',
     route: 'chat-ui',
     ideFile: 'frontend/src/app/features/chat-ui/support-chat.component.ts',
     startLine: 1,
@@ -54,25 +58,20 @@ export const PAGES = definePages([
     id: 'frontend-tools-generative-ui',
     name: 'Frontend tools and generative UI',
     videoName: 'FrontendToolsGenerativeUi',
-    docPath: 'guides/frontend-tools-generative-ui',
+    docPath: 'frontend-tools',
     route: 'frontend-tools-generative-ui',
-    ideFile: 'frontend/src/app/features/tools/tools-chat.component.ts',
-    startLine: 57,
-    endLine: 86,
-    extraTabs: [
-      { filePath: 'frontend/src/app/features/tools/incident-card.component.ts', startLine: 1, endLine: 30 },
-      { filePath: 'frontend/src/app/features/tools/weather-card.component.ts', startLine: 1, endLine: 29 },
-      PKG,
-    ],
+    ideFile: 'frontend/src/app/features/tools/tool-feature-model.ts',
+    startLine: 1,
+    endLine: 71,
+    extraTabs: [{ filePath: 'frontend/src/app/features/tools/tools-chat.component.ts', startLine: 1, endLine: 61 }, PKG],
     prompt: 'Could you change the background to violet?',
-    prompts: ['Could you change the background to violet?', 'Pull up incident INC-4711 for me. It is a sev1.'],
     waitAfterPromptMs: 3000,
   },
   {
     id: 'generative-ui-components',
     name: 'Native generative UI',
     videoName: 'NativeGenerativeUi',
-    docPath: 'guides/generative-ui-components',
+    docPath: 'generative-ui',
     route: 'generative-ui-components',
     ideFile: 'frontend/doc-verbatim/generative-ui-components/app.config.ts',
     startLine: 1,
@@ -88,7 +87,7 @@ export const PAGES = definePages([
     id: 'a2ui',
     name: 'A2UI schemas, styling, and recovery',
     videoName: 'A2ui',
-    docPath: 'guides/a2ui',
+    docPath: 'generative-ui/a2ui',
     route: 'a2ui',
     ideFile: 'frontend/doc-verbatim/a2ui/app.config.ts',
     startLine: 1,
@@ -105,20 +104,29 @@ export const PAGES = definePages([
     id: 'voice-multimodal',
     name: 'Voice and multimodal input',
     videoName: 'VoiceMultimodal',
-    docPath: 'guides/voice-multimodal',
+    docPath: 'voice',
     route: 'voice-multimodal',
     ideFile: 'frontend/src/app/features/media/voice-chat.component.ts',
     startLine: 1,
-    endLine: 32,
-    extraTabs: [RUNTIME, PKG],
-    prompt: 'Have a look at the chart I attached. What is it titled, and what does Q4 come to?',
+    endLine: 35,
+    extraTabs: [
+      {
+        filePath: 'frontend/src/app/features/media/weather-card.component.ts',
+        startLine: 1,
+        endLine: 28,
+        addedText: '// HARNESS: the Voice page (https://docs.copilotkit.ai/angular/ag2/voice) uses WeatherCardComponent',
+      },
+      RUNTIME,
+      PKG,
+    ],
+    prompt: 'What is the weather in Paris right now?',
     waitAfterPromptMs: 3000,
   },
   {
     id: 'human-in-the-loop',
     name: 'Human-in-the-loop and interrupts',
     videoName: 'HumanInTheLoop',
-    docPath: 'guides/human-in-the-loop',
+    docPath: 'human-in-the-loop',
     route: 'human-in-the-loop',
     ideFile: 'frontend/src/app/features/hitl/approval-tools.service.ts',
     startLine: 1,
@@ -131,29 +139,29 @@ export const PAGES = definePages([
     id: 'shared-state',
     name: 'Shared state and agent context',
     videoName: 'SharedState',
-    docPath: 'guides/shared-state',
+    docPath: 'shared-state',
     route: 'shared-state',
     ideFile: 'frontend/src/app/features/shared-state/workspace.component.ts',
     startLine: 1,
     endLine: 51,
-    extraTabs: [
-      { filePath: 'frontend/src/app/features/shared-state/account-context.component.ts', startLine: 1, endLine: 34 },
-      PKG,
-    ],
+    extraTabs: [PKG],
     prompt: 'What is the priority set to right now?',
-    prompts: ['What is the priority set to right now?', 'Which timezone am I on?'],
     waitAfterPromptMs: 3000,
   },
   {
     id: 'threads-memory-attachments-headless',
     name: 'Threads, memory, attachments, and headless UI',
     videoName: 'ThreadsMemoryHeadless',
-    docPath: 'guides/threads-memory-attachments-headless',
+    docPath: 'headless-threads',
     route: 'threads',
     ideFile: 'frontend/src/app/features/threads/thread-list.component.ts',
     startLine: 1,
     endLine: 45,
-    extraTabs: [{ filePath: 'frontend/src/app/features/threads/threads-demo.component.ts', startLine: 1, endLine: 35 }, PKG],
+    extraTabs: [
+      { filePath: 'frontend/src/app/features/threads/resume-chat.component.ts', startLine: 1, endLine: 21 },
+      { filePath: 'frontend/src/app/features/threads/threads-demo.component.ts', startLine: 1, endLine: 36 },
+      PKG,
+    ],
     prompt: 'In one line, what are threads for?',
     waitAfterPromptMs: 3000,
   },
@@ -377,6 +385,55 @@ export const PAGES = definePages([
       PKG,
     ],
     prompt: 'Show the flight route JFK to LHR with an Airport component for each airport and an Arrow between them.',
+    waitAfterPromptMs: 3000,
+  },
+  {
+    id: 'multimodal-attachments',
+    name: 'Multimodal Attachments',
+    videoName: 'MultimodalAttachments',
+    docPath: 'multimodal-attachments',
+    docStorage: ANGULAR_TAB,
+    route: 'multimodal-attachments',
+    ideFile: 'frontend/src/app/features/attachments/media-chat.component.ts',
+    startLine: 1,
+    endLine: 28,
+    extraTabs: [
+      { filePath: 'frontend/doc-verbatim/multimodal-attachments/media-model.ts', startLine: 1, endLine: 25 },
+      PKG,
+    ],
+    prompt: 'What is the title of this chart, and which quarter has the highest value?',
+    timeouts: { replyStartMs: 120_000, replyStreamMs: 90_000 },
+    waitAfterPromptMs: 3000,
+  },
+  {
+    id: 'agent-readonly',
+    name: 'Agent Read-Only Context',
+    videoName: 'AgentReadonly',
+    docPath: 'shared-state/agent-readonly',
+    docStorage: ANGULAR_TAB,
+    route: 'agent-readonly',
+    ideFile: 'frontend/src/app/features/shared-state/account-context.component.ts',
+    startLine: 1,
+    endLine: 34,
+    extraTabs: [
+      { filePath: 'frontend/src/app/features/shared-state/selection-context.component.ts', startLine: 1, endLine: 23 },
+      PKG,
+    ],
+    prompt: 'What is my name and timezone, and which record is selected?',
+    waitAfterPromptMs: 3000,
+  },
+  {
+    id: 'threads-drawer',
+    name: 'Threads Drawer',
+    videoName: 'ThreadsDrawer',
+    docPath: 'prebuilt-components/copilot-threads-drawer',
+    docStorage: ANGULAR_TAB,
+    route: 'threads-drawer',
+    ideFile: 'frontend/src/app/features/threads/conversations.component.ts',
+    startLine: 1,
+    endLine: 26,
+    extraTabs: [RUNTIME, PKG],
+    prompt: 'Hi! Give me a one-line tip for staying focused.',
     waitAfterPromptMs: 3000,
   },
 ]);

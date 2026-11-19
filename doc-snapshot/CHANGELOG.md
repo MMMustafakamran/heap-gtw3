@@ -3,6 +3,37 @@
 What the CopilotKit Angular + AG2 docs changed under this repo.
 Only pages that actually moved are recorded — a sync that finds everything unchanged writes nothing here at all.
 
+## 2026-11-19 (nav)
+
+- sidebar: added /angular/ag2/frontend-tools, /angular/ag2/generative-ui, /angular/ag2/prebuilt-components, /angular/ag2/multimodal-attachments, /angular/ag2/voice, /angular/ag2/generative-ui/a2ui, /angular/ag2/human-in-the-loop, /angular/ag2/vs-code-extension, /angular/ag2/prebuilt-components/copilot-threads-drawer, /angular/ag2/headless-threads, /angular/ag2/backend/copilot-runtime, /angular/ag2/backend/runtime-endpoints, /angular/ag2/backend/custom-agent, /angular/ag2/backend/custom-ag-ui-agent, /angular/ag2/backend/agent-runner, /angular/ag2/backend/message-history, /angular/ag2/backend/self-managed-agents, /angular/ag2/backend/ag-ui, /angular/ag2/runtime-server-adapter, /angular/ag2/shared-state, /angular/ag2/shared-state/agent-readonly; removed /angular/ag2/quickstart, /angular/ag2/intelligence/quickstart, /angular/ag2/intelligence/intelligence-platform, /angular/ag2/intelligence/plans, /angular/ag2/intelligence/bring-your-own-thread-system, /angular/ag2/intelligence/threads-explained, /angular/ag2/learning, /angular/ag2/intelligence/learned-skills, /angular/ag2/intelligence/memories, /angular/ag2/intelligence/trajectories, /angular/ag2/intelligence/captured-data, /angular/ag2/intelligence/trajectories-reference, /angular/ag2/intelligence/standalone-collector, /angular/ag2/intelligence/analytics, /angular/ag2/intelligence/channels, /angular/ag2/intelligence/managed-intelligence-platform, /angular/ag2/intelligence/self-hosting, /angular/ag2/intelligence/self-hosting-ecs, /angular/ag2/intelligence/self-hosting-local, /angular/ag2/copilot-runtime, /angular/ag2/ag-ui, /angular/ag2/using-these-docs, /angular/ag2/features, /angular/ag2/guides/chat-ui, /angular/ag2/guides/frontend-tools-generative-ui, /angular/ag2/guides/a2ui, /angular/ag2/guides/voice-multimodal, /angular/ag2/guides/human-in-the-loop, /angular/ag2/guides/shared-state, /angular/ag2/guides/threads-memory-attachments-headless, /angular/ag2/guides/troubleshooting, /angular/ag2/contributing/code-contributions/package-linking, /angular/ag2/contributing/docs-contributions, /angular/ag2/troubleshooting/common-issues
+
+## 2026-11-19 (https://docs.copilotkit.ai/angular/ag2, prebuilt-components, frontend-tools, generative-ui, generative-ui/a2ui, voice, human-in-the-loop, shared-state, headless-threads, webmcp, auth, multi-agent/subagents, inspector, https://docs.copilotkit.ai/ag2/generative-ui/components, https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces, https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs, https://docs.copilotkit.ai/generative-ui/components/standard-catalog, https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions, https://docs.copilotkit.ai/ag2/generative-ui/components/theming, https://docs.copilotkit.ai/ag2/generative-ui/components/transports, https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode, https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui, multimodal-attachments, shared-state/agent-readonly, prebuilt-components/copilot-threads-drawer)
+
+- frontend-tools: NEW new (+48 / -0)
+- generative-ui: NEW new (+21 / -0)
+- prebuilt-components: NEW new (+106 / -0)
+- https://docs.copilotkit.ai/angular/ag2: NEW new (+173 / -0)
+- voice: NEW new (+63 / -0)
+- generative-ui/a2ui: NEW new (+192 / -0)
+- human-in-the-loop: NEW new (+107 / -0)
+- shared-state: NEW new (+92 / -0)
+- headless-threads: NEW new (+67 / -0)
+- webmcp: MEDIUM structure (+17 / -17)
+- auth: HIGH code (+21 / -4)
+- multi-agent/subagents: HIGH code, install, structure (+198 / -23)
+- inspector: MEDIUM structure (+15 / -13)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces: LOW prose (+2 / -2)
+- https://docs.copilotkit.ai/ag2/generative-ui/components: MEDIUM banner (+6 / -8)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs: HIGH code, structure (+52 / -7)
+- https://docs.copilotkit.ai/generative-ui/components/standard-catalog: MEDIUM structure (+7 / -10)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions: HIGH code (+22 / -12)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/theming: LOW prose (+1 / -1)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/transports: HIGH code (+3 / -1)
+- https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui: MEDIUM structure (+8 / -9)
+- multimodal-attachments: NEW new (+116 / -0)
+- prebuilt-components/copilot-threads-drawer: NEW new (+34 / -0)
+- shared-state/agent-readonly: NEW new (+81 / -0)
+
 ## 2026-11-16 (guides/a2ui, https://docs.copilotkit.ai/ag2/generative-ui/components, https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs, https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui, https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode, https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions, https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces, https://docs.copilotkit.ai/ag2/generative-ui/components/theming, https://docs.copilotkit.ai/ag2/generative-ui/components/transports, https://docs.copilotkit.ai/generative-ui/components/standard-catalog)
 
 - guides/a2ui: HIGH code (+9 / -9)

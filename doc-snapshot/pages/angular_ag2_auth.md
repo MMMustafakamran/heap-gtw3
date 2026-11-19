@@ -2,7 +2,7 @@
 
 > Authenticate Angular requests at Copilot Runtime and forward only the identity context your agent needs.
 
-## What authentication protects
+## What authentication protects [#what-authentication-protects]
 
 CopilotKit authentication covers two boundaries:
 
@@ -14,7 +14,7 @@ Keep model credentials and service-to-service agent tokens on the server.
 Browser headers prove the end user's session; they are not a safe place for
 backend secrets.
 
-## Send the current session
+## Send the current session [#send-the-current-session]
 
 Set initial headers in `provideCopilotKit`:
 
@@ -52,14 +52,13 @@ copilotKit.updateRuntime({
 
 The runnable Angular Showcase uses the same header shape:
 
-```typescript
-// features/app-settings/app-settings-feature.component.ts
+```typescript title="features/app-settings/app-settings-feature.component.ts"
 const DEMO_AUTH_HEADERS: Readonly<Record<string, string>> = {
   Authorization: "Bearer demo-token-123",
 };
 ```
 
-## Send cookies to a cross-origin runtime
+## Send cookies to a cross-origin runtime [#send-cookies-to-a-cross-origin-runtime]
 
 To enable HTTP-only cookie authentication, set `credentials: "include"` and
 configure CORS on your runtime endpoint:
@@ -81,15 +80,18 @@ export const appConfig: ApplicationConfig = {
 Configure the runtime with `credentials: true` and the Angular app's exact
 origin. Credentialed CORS requests cannot use `*` as the allowed origin.
 
-## Validate every runtime request
+## Validate every runtime request [#validate-every-runtime-request]
 
 Use the runtime adapter's request hook to reject missing, expired, or
 unauthorized sessions before CopilotKit discovers or runs an agent:
 
 ```ts title="server.ts"
-const handler = createCopilotExpressHandler({
+import { createCopilotNodeListener } from "@copilotkit/runtime/v2/node";
+
+const listener = createCopilotNodeListener({
   runtime,
   basePath: "/api/copilotkit",
+  cors: true,
   hooks: {
     onRequest: async ({ request }) => {
       const token = request.headers
@@ -108,7 +110,17 @@ const handler = createCopilotExpressHandler({
 Apply authorization as well as authentication. A valid user token does not
 automatically grant access to every agent, tenant, or thread.
 
-## Forward identity deliberately
+To test the hook, start the runtime and send a request with no token:
+
+```bash
+curl -i http://localhost:8200/api/copilotkit/info
+```
+
+The runtime returns `401 Unauthorized`. Send the same request with
+`-H "Authorization: Bearer <token>"` and a valid token, and it returns the
+agent list.
+
+## Forward identity deliberately [#forward-identity-deliberately]
 
 Copilot Runtime forwards `authorization` and eligible `x-*` headers to a
 self-hosted agent, subject to its denylist. Prefer a small allowlist when your
@@ -127,18 +139,23 @@ Server-configured agent headers win over forwarded browser headers. Use that
 separation for service credentials, and never allow a browser-supplied header
 to override a backend token.
 
-## Production checklist
+## Production checklist [#production-checklist]
 
-- Validate `/info`, run, connect, stop, thread, and memory requests—not just
+Before launch:
+
+- Validate `/info`, run, connect, stop, thread, and memory requests, not just
   chat sends.
 - Derive user and tenant identifiers from the verified session instead of
   trusting arbitrary browser values.
 - Scope thread operations to the authenticated user and project.
+
+Also:
+
 - Clear frontend headers on sign-out with `updateRuntime({ headers: {} })`.
 - Configure CORS for the deployed Angular origin.
 - Log authorization failures without logging bearer tokens.
 
-## Next steps
+## Next steps [#next-steps]
 
 - [Copilot Runtime](/angular/ag2/backend/copilot-runtime)
 - [Runtime HTTP endpoints](/angular/ag2/backend/runtime-endpoints)

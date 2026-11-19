@@ -1,0 +1,4 @@
+- Each run carries the catalog and a guide. The guide has only the rules that your catalog needs, so a small catalog gets a short guide. The full standard catalog is the largest part. To keep runs small, drop the components that you do not need with [`omit`](/generative-ui/components/standard-catalog#drop-components).
++ 
++     import { standardUI } from "@copilotkit/react-core/v2/generative-ui";
++ Each run carries the catalog and a guide. The guide has only the rules that your catalog needs, so a small catalog gets a short guide. The full standard catalog is the largest part. To keep runs small, drop the components that you do not need with [`omit`](/ag2/generative-ui/components/standard-catalog#drop-components).

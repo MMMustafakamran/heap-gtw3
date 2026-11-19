@@ -11,35 +11,29 @@
  * the page itself changing. The registration is removed when this injector is
  * destroyed.
  *
- * `registerComponent` — the guide's new first section: a component the agent
- * displays, with no handler and nothing on the agent side. `show_incident` is
- * declared here by the frontend and forwarded to the AG2 agent over AG-UI, so
- * the AG2 process never learns about it. Needs @copilotkit/angular 0.5.0 or
- * newer; this repo runs 0.5.1.
+ * 2026-11-19: the new Frontend Tools page only has the change_background tool
+ * (tool-feature-model.ts). registerRenderToolCall / WeatherCardComponent and
+ * registerComponent / show_incident are no longer on it, so they are not
+ * registered here any more (their files stay on disk).
  *
  * The guide's other `registerFrontendTool` sample is a second `getWeather`
  * that runs in the browser. It is not mounted: it would collide with the
  * server-side tool of the same name, and it calls an `/api/weather` endpoint
  * this repo does not serve.
  *
- * https://docs.copilotkit.ai/angular/ag2/guides/frontend-tools-generative-ui
+ * https://docs.copilotkit.ai/angular/ag2/frontend-tools
  */
 
 import { Component, signal } from '@angular/core';
 import {
   CopilotSidebar,
-  registerComponent,
   registerFrontendTool,
-  registerRenderToolCall,
 } from '@copilotkit/angular';
-import { z } from 'zod';
 
-import { IncidentCardComponent } from './incident-card.component';
 import {
   DEFAULT_BACKGROUND,
   createBackgroundTool,
 } from './tool-feature-model';
-import { WeatherCardComponent } from './weather-card.component';
 
 @Component({
   selector: 'app-tools-chat',
@@ -59,29 +53,9 @@ export class ToolsChatComponent {
   protected readonly background = signal(DEFAULT_BACKGROUND);
 
   constructor() {
-    // frontend tools : render a tool result start
-    registerRenderToolCall({
-      name: 'getWeather',
-      args: z.object({ city: z.string() }),
-      component: WeatherCardComponent,
-    });
-    // frontend tools : render a tool result end
-
     // frontend tools : register a browser tool start
     registerFrontendTool(createBackgroundTool(this.background));
     // frontend tools : register a browser tool end
-
-    // frontend tools : let the agent display one of your components start
-    registerComponent({
-      name: "show_incident",
-      description: "Show one incident from the incident table.",
-      parameters: z.object({
-        id: z.string().describe("The incident id, such as INC-4711"),
-        severity: z.string().describe("One of sev1, sev2, sev3"),
-      }),
-      component: IncidentCardComponent,
-    });
-    // frontend tools : let the agent display one of your components end
   }
 }
 // frontend tools : register tools and renderers end

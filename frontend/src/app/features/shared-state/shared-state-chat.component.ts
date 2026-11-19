@@ -1,15 +1,14 @@
 // shared state : shared state chat start
 /**
- * Mounts the guide's three surfaces against one chat: the read/write state
- * panel, the accessor-based context, and the directive-based context.
- * https://docs.copilotkit.ai/angular/ag2/guides/shared-state
+ * Mounts the page's read/write state panel against one chat.
+ * https://docs.copilotkit.ai/angular/ag2/shared-state
+ * 2026-11-19: the agent-context snippets (account-context, selection-context) are no longer
+ * on the new Shared State page; their files stay on disk, not mounted here.
  */
 
 import { Component } from '@angular/core';
 import { CopilotChat } from '@copilotkit/angular';
 
-import { AccountContextComponent } from './account-context.component';
-import { SelectionContextComponent } from './selection-context.component';
 import { WorkspaceComponent } from './workspace.component';
 
 @Component({
@@ -17,15 +16,11 @@ import { WorkspaceComponent } from './workspace.component';
   imports: [
     CopilotChat,
     WorkspaceComponent,
-    AccountContextComponent,
-    SelectionContextComponent,
   ],
   template: `
     <div style="display: flex; height: 100%; gap: 1rem">
       <div style="width: 20rem; overflow-y: auto; padding: 1rem">
         <app-workspace />
-        <app-account-context />
-        <app-selection-context />
       </div>
       <div style="flex: 1; min-width: 0">
         <copilot-chat />

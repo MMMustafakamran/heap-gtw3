@@ -1,0 +1,660 @@
+{
+  "checkedAt": "2026-11-19T16:42:56.038Z",
+  "root": "angular/ag2",
+  "state": "drift",
+  "unknown": [],
+  "pages": [
+    {
+      "docPath": "auth",
+      "url": "https://docs.copilotkit.ai/angular/ag2/auth",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "code"
+      ],
+      "severity": "HIGH",
+      "added": 21,
+      "removed": 4
+    },
+    {
+      "docPath": "frontend-tools",
+      "url": "https://docs.copilotkit.ai/angular/ag2/frontend-tools",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "generative-ui",
+      "url": "https://docs.copilotkit.ai/angular/ag2/generative-ui",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "generative-ui/a2ui",
+      "url": "https://docs.copilotkit.ai/angular/ag2/generative-ui/a2ui",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "guides/a2ui",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/a2ui",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/generative-ui/a2ui"
+    },
+    {
+      "docPath": "guides/chat-ui",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/chat-ui",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/prebuilt-components"
+    },
+    {
+      "docPath": "guides/frontend-tools-generative-ui",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/frontend-tools-generative-ui",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/frontend-tools"
+    },
+    {
+      "docPath": "guides/generative-ui-components",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/generative-ui-components",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/generative-ui"
+    },
+    {
+      "docPath": "guides/human-in-the-loop",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/human-in-the-loop",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/human-in-the-loop"
+    },
+    {
+      "docPath": "guides/shared-state",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/shared-state",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/shared-state"
+    },
+    {
+      "docPath": "guides/threads-memory-attachments-headless",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/threads-memory-attachments-headless",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/headless-threads"
+    },
+    {
+      "docPath": "guides/voice-multimodal",
+      "url": "https://docs.copilotkit.ai/angular/ag2/guides/voice-multimodal",
+      "tracked": false,
+      "state": "moved",
+      "movedTo": "/angular/ag2/voice"
+    },
+    {
+      "docPath": "headless-threads",
+      "url": "https://docs.copilotkit.ai/angular/ag2/headless-threads",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "banner"
+      ],
+      "severity": "MEDIUM",
+      "added": 6,
+      "removed": 8
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "code",
+        "structure"
+      ],
+      "severity": "HIGH",
+      "added": 52,
+      "removed": 7
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "structure"
+      ],
+      "severity": "MEDIUM",
+      "added": 8,
+      "removed": 9
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/markdown-mode",
+      "tracked": true,
+      "active": true,
+      "state": "same"
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "code"
+      ],
+      "severity": "HIGH",
+      "added": 22,
+      "removed": 12
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "prose"
+      ],
+      "severity": "LOW",
+      "added": 2,
+      "removed": 2
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/theming",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/theming",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "prose"
+      ],
+      "severity": "LOW",
+      "added": 1,
+      "removed": 1
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/transports",
+      "url": "https://docs.copilotkit.ai/ag2/generative-ui/components/transports",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "code"
+      ],
+      "severity": "HIGH",
+      "added": 3,
+      "removed": 1
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/angular/ag2",
+      "url": "https://docs.copilotkit.ai/angular/ag2",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/generative-ui/components/standard-catalog",
+      "url": "https://docs.copilotkit.ai/generative-ui/components/standard-catalog",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "structure"
+      ],
+      "severity": "MEDIUM",
+      "added": 7,
+      "removed": 10
+    },
+    {
+      "docPath": "human-in-the-loop",
+      "url": "https://docs.copilotkit.ai/angular/ag2/human-in-the-loop",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "inspector",
+      "url": "https://docs.copilotkit.ai/angular/ag2/inspector",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "structure"
+      ],
+      "severity": "MEDIUM",
+      "added": 15,
+      "removed": 13
+    },
+    {
+      "docPath": "multi-agent/subagents",
+      "url": "https://docs.copilotkit.ai/angular/ag2/multi-agent/subagents",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "code",
+        "install",
+        "structure"
+      ],
+      "severity": "HIGH",
+      "added": 198,
+      "removed": 23
+    },
+    {
+      "docPath": "multimodal-attachments",
+      "url": "https://docs.copilotkit.ai/angular/ag2/multimodal-attachments",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "prebuilt-components",
+      "url": "https://docs.copilotkit.ai/angular/ag2/prebuilt-components",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "prebuilt-components/copilot-threads-drawer",
+      "url": "https://docs.copilotkit.ai/angular/ag2/prebuilt-components/copilot-threads-drawer",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "quickstart",
+      "url": "https://docs.copilotkit.ai/angular/ag2/quickstart",
+      "tracked": false,
+      "state": "changed",
+      "kinds": [
+        "structure"
+      ],
+      "severity": "MEDIUM",
+      "added": 36,
+      "removed": 54
+    },
+    {
+      "docPath": "shared-state",
+      "url": "https://docs.copilotkit.ai/angular/ag2/shared-state",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "shared-state/agent-readonly",
+      "url": "https://docs.copilotkit.ai/angular/ag2/shared-state/agent-readonly",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "voice",
+      "url": "https://docs.copilotkit.ai/angular/ag2/voice",
+      "tracked": true,
+      "active": true,
+      "state": "no-snapshot"
+    },
+    {
+      "docPath": "webmcp",
+      "url": "https://docs.copilotkit.ai/angular/ag2/webmcp",
+      "tracked": true,
+      "active": true,
+      "state": "changed",
+      "kinds": [
+        "structure"
+      ],
+      "severity": "MEDIUM",
+      "added": 17,
+      "removed": 17
+    }
+  ],
+  "sidebar": {
+    "added": [
+      {
+        "url": "/angular/ag2/frontend-tools",
+        "name": "Frontend Tools",
+        "group": "Basics > Threads"
+      },
+      {
+        "url": "/angular/ag2/generative-ui",
+        "name": "Overview",
+        "group": "Generative UI"
+      },
+      {
+        "url": "/angular/ag2/prebuilt-components",
+        "name": "Prebuilt Components",
+        "group": "Basics > Chat"
+      },
+      {
+        "url": "/angular/ag2/multimodal-attachments",
+        "name": "Multimodal Attachments",
+        "group": "Basics > Custom Look and Feel"
+      },
+      {
+        "url": "/angular/ag2/voice",
+        "name": "Voice",
+        "group": "Basics > Custom Look and Feel"
+      },
+      {
+        "url": "/angular/ag2/human-in-the-loop",
+        "name": "HITL Overview",
+        "group": "Interactivity > Human-in-the-loop"
+      },
+      {
+        "url": "/angular/ag2/generative-ui/a2ui",
+        "name": "A2UI",
+        "group": "Generative UI > Declarative"
+      },
+      {
+        "url": "/angular/ag2/shared-state",
+        "name": "Shared State",
+        "group": "Interactivity > Shared state"
+      },
+      {
+        "url": "/angular/ag2/shared-state/agent-readonly",
+        "name": "Agent Read-Only Context",
+        "group": "Interactivity > Shared state"
+      },
+      {
+        "url": "/angular/ag2/prebuilt-components/copilot-threads-drawer",
+        "name": "Threads Drawer",
+        "group": "Basics > Threads"
+      },
+      {
+        "url": "/angular/ag2/headless-threads",
+        "name": "Headless Threads",
+        "group": "Basics > Threads"
+      },
+      {
+        "url": "/angular/ag2/runtime-server-adapter",
+        "name": "Deploy to any runtime",
+        "group": "Backend > Runtime"
+      },
+      {
+        "url": "/angular/ag2/vs-code-extension",
+        "name": "VS Code Extension",
+        "group": "Backend > Debugging"
+      }
+    ],
+    "removed": [
+      {
+        "url": "/angular/ag2/quickstart",
+        "name": "Quickstart",
+        "group": ""
+      },
+      {
+        "url": "/angular/ag2/learning",
+        "name": "Automatic Learning",
+        "group": "Intelligence > Features > Automatic Learning"
+      },
+      {
+        "url": "/angular/ag2/copilot-runtime",
+        "name": "Copilot Runtime",
+        "group": "Backend > Runtime > Runtime"
+      },
+      {
+        "url": "/angular/ag2/ag-ui",
+        "name": "AG-UI",
+        "group": "Backend > Runtime > Runtime"
+      },
+      {
+        "url": "/angular/ag2/using-these-docs",
+        "name": "Using the Angular docs",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/features",
+        "name": "Feature examples",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/chat-ui",
+        "name": "Chat UI and customization",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/frontend-tools-generative-ui",
+        "name": "Frontend tools and generative UI",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/a2ui",
+        "name": "A2UI schemas, styling, and recovery",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/voice-multimodal",
+        "name": "Voice and multimodal input",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/human-in-the-loop",
+        "name": "Human-in-the-loop and interrupts",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/shared-state",
+        "name": "Shared state and agent context",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/threads-memory-attachments-headless",
+        "name": "Threads, memory, attachments, and headless UI",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/guides/troubleshooting",
+        "name": "Troubleshooting Angular apps",
+        "group": "Learn > Angular guides"
+      },
+      {
+        "url": "/angular/ag2/contributing/code-contributions/package-linking",
+        "name": "Advanced: Package Linking",
+        "group": "Other > Contributing > Code contributions"
+      },
+      {
+        "url": "/angular/ag2/contributing/docs-contributions",
+        "name": "Documentation Contributions",
+        "group": "Other > Contributing"
+      },
+      {
+        "url": "/angular/ag2/troubleshooting/common-issues",
+        "name": "Common Copilot Issues",
+        "group": "Other > Troubleshooting"
+      }
+    ],
+    "renamed": [
+      {
+        "url": "/angular/ag2",
+        "from": " > Introduction",
+        "to": "Search⌘K > Quickstart"
+      },
+      {
+        "url": "/angular/ag2/build-with-agents",
+        "from": " > Build with agents",
+        "to": "Search⌘K > Build with agents"
+      },
+      {
+        "url": "/angular/ag2/webmcp",
+        "from": "Interactivity > WebMCP",
+        "to": "Interactivity > Human-in-the-loop > WebMCP"
+      },
+      {
+        "url": "/angular/ag2/telemetry",
+        "from": "Other > Open-source telemetry",
+        "to": "Other > Troubleshooting > Open-source telemetry"
+      },
+      {
+        "url": "/angular/ag2/community-frameworks",
+        "from": "Other > Community frameworks",
+        "to": "Other > Troubleshooting > Community frameworks"
+      },
+      {
+        "url": "/angular/ag2/auth",
+        "from": "Agent capabilities > AG2 > Authentication",
+        "to": "Backend > Runtime > Authentication"
+      },
+      {
+        "url": "/angular/ag2/inspector",
+        "from": "Backend > Runtime > Debugging > Inspector",
+        "to": "Backend > Debugging > Inspector"
+      }
+    ]
+  },
+  "reach": [],
+  "newPages": [
+    {
+      "url": "https://docs.copilotkit.ai/angular/ag2/runtime-server-adapter",
+      "docPath": "runtime-server-adapter",
+      "how": "sidebar: Backend > Runtime > Deploy to any runtime"
+    },
+    {
+      "url": "https://docs.copilotkit.ai/angular/ag2/vs-code-extension",
+      "docPath": "vs-code-extension",
+      "how": "sidebar: Backend > Debugging > VS Code Extension"
+    }
+  ],
+  "deadLinks": [
+    {
+      "url": "https://docs.copilotkit.ai/angular/ag2/shared-state/streaming",
+      "how": "linked from /angular/ag2/multi-agent/subagents"
+    }
+  ],
+  "held": [
+    {
+      "docPath": "auth",
+      "ids": [],
+      "reasons": [
+        "HIGH code (+21 / -4)"
+      ],
+      "labels": [
+        "Authentication"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components",
+      "ids": [],
+      "reasons": [
+        "MEDIUM banner (+6 / -8)"
+      ],
+      "labels": [
+        "Components and surfaces"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/catalogs",
+      "ids": [],
+      "reasons": [
+        "HIGH code, structure (+52 / -7)"
+      ],
+      "labels": [
+        "Catalogs"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/from-a2ui",
+      "ids": [],
+      "reasons": [
+        "MEDIUM structure (+8 / -9)"
+      ],
+      "labels": [
+        "Adopt from A2UI"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/state-and-actions",
+      "ids": [],
+      "reasons": [
+        "HIGH code (+22 / -12)"
+      ],
+      "labels": [
+        "State and actions"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/surfaces",
+      "ids": [],
+      "reasons": [
+        "LOW prose (+2 / -2): prose on a ❌ page"
+      ],
+      "labels": [
+        "Surfaces"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/theming",
+      "ids": [],
+      "reasons": [
+        "LOW prose (+1 / -1): prose on a ❌ page"
+      ],
+      "labels": [
+        "Theming"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/ag2/generative-ui/components/transports",
+      "ids": [],
+      "reasons": [
+        "HIGH code (+3 / -1)"
+      ],
+      "labels": [
+        "Transports"
+      ]
+    },
+    {
+      "docPath": "https://docs.copilotkit.ai/generative-ui/components/standard-catalog",
+      "ids": [],
+      "reasons": [
+        "MEDIUM structure (+7 / -10)"
+      ],
+      "labels": [
+        "Standard catalog"
+      ]
+    },
+    {
+      "docPath": "inspector",
+      "ids": [],
+      "reasons": [
+        "MEDIUM structure (+15 / -13)"
+      ],
+      "labels": [
+        "Inspector"
+      ]
+    },
+    {
+      "docPath": "multi-agent/subagents",
+      "ids": [],
+      "reasons": [
+        "HIGH code, install, structure (+198 / -23)"
+      ],
+      "labels": [
+        "Sub Agents"
+      ]
+    },
+    {
+      "docPath": "webmcp",
+      "ids": [],
+      "reasons": [
+        "MEDIUM structure (+17 / -17)"
+      ],
+      "labels": [
+        "WebMCP"
+      ]
+    }
+  ]
+}

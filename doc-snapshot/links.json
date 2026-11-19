@@ -1,21 +1,23 @@
 {
  "root": "angular/ag2",
- "savedAt": "2026-11-16",
+ "savedAt": "2026-11-19",
  "pages": {
   "/angular/ag2/build-with-agents": [],
   "/angular/ag2/webmcp": [
-   "/angular/ag2/guides/frontend-tools-generative-ui"
+   "/angular/ag2/frontend-tools"
   ],
   "/angular/ag2": [
    "/angular/ag2/backend/copilot-runtime",
-   "/angular/ag2/inspector"
+   "/angular/ag2/inspector",
+   "/angular/ag2/intelligence/overview"
   ],
   "/angular/ag2/quickstart": [
    "/angular/ag2/backend/copilot-runtime",
    "/angular/ag2/inspector"
   ],
   "/angular/ag2/multi-agent/subagents": [
-   "/angular/ag2/guides/shared-state"
+   "/angular/ag2/shared-state",
+   "/angular/ag2/shared-state/streaming"
   ],
   "/angular/ag2/auth": [
    "/angular/ag2/backend/copilot-runtime",
@@ -44,8 +46,6 @@
    "/angular/ag2/quickstart"
   ],
   "/angular/ag2/inspector": [
-   "/angular/ag2/guides/troubleshooting",
-   "/angular/ag2/inspector",
    "/angular/ag2/troubleshooting/event-inspector"
   ],
   "/angular/ag2/ag-ui": [
@@ -130,6 +130,25 @@
   "/ag2/generative-ui/components/surfaces": [],
   "/ag2/generative-ui/components/theming": [],
   "/ag2/generative-ui/components/transports": [],
-  "/generative-ui/components/standard-catalog": []
+  "/generative-ui/components/standard-catalog": [],
+  "/angular/ag2/frontend-tools": [],
+  "/angular/ag2/generative-ui/a2ui": [],
+  "/angular/ag2/prebuilt-components": [],
+  "/angular/ag2/voice": [
+   "/angular/ag2/voice"
+  ],
+  "/angular/ag2/generative-ui": [],
+  "/angular/ag2/human-in-the-loop": [],
+  "/angular/ag2/shared-state": [],
+  "/angular/ag2/headless-threads": [],
+  "/angular/ag2/multimodal-attachments": [],
+  "/angular/ag2/shared-state/agent-readonly": [],
+  "/angular/ag2/prebuilt-components/copilot-threads-drawer": [],
+  "/angular/ag2/runtime-server-adapter": [
+   "/angular/ag2/intelligence/quickstart"
+  ],
+  "/angular/ag2/vs-code-extension": [
+   "/angular/ag2/troubleshooting/event-inspector"
+  ]
  }
 }

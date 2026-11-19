@@ -1,0 +1,77 @@
+- 
+- `@copilotkit/angular` provides Angular components, directives, and services for CopilotKit. This guide gets you to a working Angular app with a chat UI backed by [Copilot Runtime](/angular/ag2/backend/copilot-runtime). When you select an agent backend in the sidebar, the backend step below changes with it; without a selection, the guide uses CopilotKit's `BuiltInAgent`.
+- Ask your coding agent to follow the setup steps on this page for your selected framework and frontend.
+- ## What is CopilotKit for Angular?
+- CopilotKit for Angular is the first-party, signal-based Angular frontend for
+- AG-UI agents and Copilot Runtime. It provides complete chat surfaces and
+- headless APIs, and it supports zoneless applications.
+- - An OpenAI API key (or another model provider supported by [Model Selection](/angular/model-selection))
+-         ```bash
+-         ```
+-         Install the Angular frontend package, `@angular/cdk`, and `@copilotkit/runtime` for your local Copilot Runtime server:
+-         </Callout>
+-       <Step>
+-         ### Connect the selected agent backend
+-         This URL keeps the agent backend selected. The Angular setup remains
+-         shared; the backend setup below comes from that integration's canonical
+-         showcase source.
+-         <!-- setup skipped: agent-setup is not bundled for ag2 -->
+-         <Callout type="info" title="Expose the selected backend through Copilot Runtime">
+-           Configure Copilot Runtime to register this backend as the `default`
+-           agent at `/api/copilotkit`. Continue with the selected backend's
+-           [Copilot Runtime guide](backend/copilot-runtime) for its runtime
+-           adapter, credentials, and server command. Do not replace it with the
+-           `BuiltInAgent` server from the standalone Angular path.
+-       </Step>
+-         ### Run the backend, runtime, and Angular app
+-         Start the selected agent backend and Copilot Runtime with the commands
+-         from its runtime guide. Confirm
+-         `http://localhost:8200/api/copilotkit/info` reports the `default`
+-         agent, then start Angular:
+-         npm start
+-         Open the Angular CLI URL (usually `http://localhost:4200`) and send a
+-         message. The request now follows the selected path end to end:
+-         Angular → Copilot Runtime → your selected agent backend.
+- On localhost, click the Inspector button in the corner of the app.
+- 1. Open **Agents**, then **Agent**. Your agent is listed.
+- 2. Send a chat message. Open **Agents**, then **AG-UI Events**. Events are moving.
+- 3. Open **Rich Threads**. The list is unlocked (Intelligence is on), or locked with Enable Intelligence (Intelligence is off).
+- More detail: [Inspector](/angular/ag2/inspector).
+- - [Runtime and backend docs](backend/copilot-runtime): configure the server, secure requests, and deploy without leaving the selected Angular surface.
+- - [CopilotKit Intelligence](intelligence/overview): add threads, inspection, and cloud-hosted or self-hosted operations.
+- - [Angular task guides](guides/chat-ui): build chat UI, tools, generative UI, interrupts, shared state, threads, memory, attachments, and headless UI.
+- - [Angular feature examples](features): find runnable examples and canonical shared Angular source for each supported feature.
++ This guide takes an Angular app to a working chat UI backed by [Copilot Runtime](/angular/ag2/backend/copilot-runtime). When you select an agent backend in the sidebar, the backend step below changes with it. Without a selection, the guide uses CopilotKit's `BuiltInAgent`.
++ <PageAgentPrompt />
++ - An OpenAI API key (or another model provider supported by [Model Selection](/model-selection))
++     <Step>
++     </Step>
++         `@copilotkit/angular` gives you Angular components, directives, and services for CopilotKit. It supports zoneless applications. Install it with `@angular/cdk`, and install `@copilotkit/runtime` for your local Copilot Runtime server:
++       ### Connect the selected agent backend
++       <Callout type="info" title="Expose the selected backend through Copilot Runtime">
++         Configure Copilot Runtime to register this backend as the `default`
++         agent at `/api/copilotkit`. Continue with the selected backend's
++         [Copilot Runtime guide](/angular/ag2/backend/copilot-runtime) for its runtime
++         adapter, credentials, and server command. Do not replace it with the
++         `BuiltInAgent` server from the standalone Angular path.
++       </Callout>
++       ### Run the backend, runtime, and Angular app
++       Start the selected agent backend and Copilot Runtime with the commands
++       from its runtime guide. Confirm
++       `http://localhost:8200/api/copilotkit/info` reports the `default`
++       agent, then start Angular:
++       ```bash
++       npm start
++       ```
++       Open the Angular CLI URL (usually `http://localhost:4200`) and send a
++       message. The request now follows the selected path end to end:
++       Angular → Copilot Runtime → your selected agent backend.
++         On localhost, click the Inspector button in the corner of the app.
++         1. Open **Inspect**, then **Agent**. Your agent is listed.
++         2. Send a chat message. Open **Inspect**, then **AG-UI Events**. Events are moving.
++         3. Open **Rich Threads**. The list is unlocked (Intelligence is on), or locked with **Copy setup prompt** (Intelligence is off).
++         More detail: [Inspector](/angular/ag2/inspector).
++ 1. [Prebuilt Components](/angular/prebuilt-components): choose a chat surface, then follow the sidebar to frontend tools, generative UI, human-in-the-loop, shared state, threads, attachments, and headless UI.
++ 2. [Runtime and backend docs](/angular/ag2/backend/copilot-runtime): configure the server, secure requests, and deploy without leaving the selected Angular surface.
++ Later:
++ - [CopilotKit Intelligence](/angular/ag2/intelligence/overview): add threads, inspection, and cloud-hosted or self-hosted operations.

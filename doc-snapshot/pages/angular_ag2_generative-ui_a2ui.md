@@ -1,18 +1,12 @@
-# A2UI schemas, styling, and recovery
+# A2UI
 
 > Configure typed A2UI catalogs, Angular-owned styles, and incomplete-stream recovery.
 
-A2UI renders declarative interface operations and snapshots inside Angular
-chat. Configure it with a catalog of allowed components; the renderer creates
-only components that the catalog defines.
+When your agent builds UI on the fly, you want it to use only components you
+approve. A2UI renders the agent's UI in Angular chat from a catalog that you
+define. The renderer creates only components that the catalog defines.
 
-## What is A2UI?
-
-A2UI is CopilotKit's declarative generative UI path for Angular. Instead of
-asking an agent to emit arbitrary component code, you give it a typed catalog
-and render only the operations that match that catalog.
-
-## Choose a schema strategy
+## Choose a schema strategy [#choose-a-schema-strategy]
 
 Catalog component definitions use Zod schemas for their props. A broad catalog
 lets the agent compose several application primitives. A fixed catalog narrows
@@ -20,8 +14,7 @@ the generated interface to a specific domain and set of shapes.
 
 The flight example keeps its component vocabulary deliberately small:
 
-```typescript
-// features/a2ui/a2ui-definitions.ts
+```typescript title="features/a2ui/a2ui-definitions.ts"
 export const fixedDefinitions = {
   Card: { props: z.object({ child: z.string() }) },
   Title: { props: z.object({ text: dynamicString }) },
@@ -39,33 +32,9 @@ export const fixedDefinitions = {
 } satisfies A2UICatalogDefinitions;
 ```
 
-Give each catalog a stable `catalogId`, then select it in the `a2ui` option
-passed to `provideCopilotKit`. The Showcase chooses a general catalog, a fixed
-flight catalog, or the recovery variant from the active feature:
-
-```typescript
-// features/a2ui/a2ui-catalogs.ts
-export function a2uiConfigForFeature(feature: string): A2UIConfig | undefined {
-  switch (feature) {
-    case "beautiful-chat":
-      return { catalog: beautifulCatalog };
-    case "declarative-gen-ui":
-      return { catalog: declarativeCatalog };
-    case "a2ui-recovery":
-      return {
-        catalog: declarativeCatalog,
-        recovery: { showAfterMs: 2_000, showAfterAttempts: 2 },
-      };
-    case "a2ui-fixed-schema":
-      return { catalog: fixedCatalog };
-    default:
-      return undefined;
-  }
-}
-```
-
-In an application config, pass the chosen catalog and lifecycle policy through
-the Angular provider:
+Give each catalog a stable `catalogId`. In an application config, pass the
+chosen catalog and lifecycle policy through the `a2ui` option of
+`provideCopilotKit`:
 
 ```ts title="src/app/app.config.ts"
 provideCopilotKit({
@@ -80,13 +49,16 @@ provideCopilotKit({
 A catalog is required: without one, A2UI stays off even when the runtime
 enables it, and CopilotKit logs a warning.
 
-### Use existing web components
+### Use existing web components [#use-existing-web-components]
 
 A catalog entry can also be a Custom Element, such as a component from an
 existing design system. Pass `{ tagName, element }` instead of an Angular
 component, and mix both kinds freely:
 
 ```ts title="src/app/a2ui-catalog.ts"
+import { ChildListSchema, createAngularCatalog } from "@copilotkit/angular/a2ui";
+import { z } from "zod";
+
 const catalog = createAngularCatalog(
   {
     Badge: { props: z.object({ label: z.string() }) },
@@ -110,18 +82,17 @@ By default, CopilotKit includes the catalog schema in agent context. Set
 `includeSchema: false` only when the server already supplies equivalent schema
 and generation instructions. Otherwise the agent cannot reliably know which
 components and props are valid. With `includeSchema: false`, the agent context
-lists only the catalog ID and the custom component names, so a LangGraph A2UI
-subagent gets the component names only unless you pass a composition guide
-through the CopilotKit middleware's A2UI guidelines.
+lists only the catalog ID and the custom component names. A LangGraph A2UI
+subagent then gets only the component names. To give it more, pass a
+composition guide through the A2UI guidelines of the CopilotKit middleware.
 
-## Style rendered components
+## Style rendered components [#style-rendered-components]
 
 Catalog components are Angular components with application-owned class
 names. Style those classes in the global stylesheet so generated surfaces and
 their nested elements receive the same rules:
 
-```css
-/* styles.css */
+```css title="styles.css"
 .a2ui-row {
   display: flex;
   flex-wrap: wrap;
@@ -192,30 +163,29 @@ than asking the model to invent colors. You can also pass an A2UI `theme`
 through `provideCopilotKit` for renderer-level theme values; catalog CSS
 remains the right place for product-specific layout and visual states.
 
-## Recover incomplete streams
+## Recover incomplete streams [#recover-incomplete-streams]
 
 An interrupted stream can leave an A2UI surface without a terminal lifecycle
 event. Configure `recovery.showAfterMs` to avoid flashing recovery UI during a
 normal pause and `recovery.showAfterAttempts` to wait through transient retry
-attempts. The Showcase uses two seconds and two attempts, as shown in the
-catalog-selection snippet above.
+attempts. The provider sample above uses two seconds and two attempts.
 
 Use `recovery.debugExposure` only when users should see protocol diagnostics.
 Keep it hidden in consumer-facing chat, or choose a collapsed or verbose mode
 for internal debugging. Recovery thresholds affect client display; the server
 still owns activity lifecycle status and retry behavior.
 
-## Angular support boundaries
+## Angular support boundaries [#angular-support-boundaries]
 
 - **Hashbrown is unsupported.** The stable Hashbrown Angular package does not support the Angular 22 policy.
-  Do not add it to an Angular integration; use A2UI with a typed catalog instead.
+  Use A2UI with a typed catalog instead.
 - **JSON Renderer is not applicable.** JSON Renderer does not provide an Angular renderer; use A2UI for declarative Angular interfaces.
 
-These are authoritative framework support states, not missing examples.
+## Check the result [#check-the-result]
 
-## Next steps
+Ask the agent to show your data with one of your catalog components. The chat
+renders that component from your catalog.
 
-- [Dynamic catalog](/angular/ag2/features#declarative-gen-ui)
-- [Fixed schema](/angular/ag2/features#a2ui-fixed-schema)
-- [Recovery behavior](/angular/ag2/features#a2ui-recovery)
-- [Other generative UI paths](/angular/ag2/guides/frontend-tools-generative-ui)
+## Next steps [#next-steps]
+
+- [Other generative UI paths](/angular/generative-ui)

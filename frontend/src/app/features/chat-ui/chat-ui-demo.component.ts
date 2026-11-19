@@ -10,6 +10,10 @@
  *
  * Bindings on the split hosts are the guide's, unchanged.
  *
+ * 2026-11-19: the new Prebuilt Components page no longer has "Replace an assistant message"
+ * or the "Scope CSS changes" block, so the custom-message tab and the .support-chat scope
+ * were removed (files kept on disk).
+ *
  * `.support-chat` is applied to the inline tab only. It is the scope class for
  * the guide's "Scope CSS changes" block, which repaints the message bubbles —
  * putting it on the shared host would tint the custom-message, popup, and
@@ -18,18 +22,16 @@
  */
 import { Component, signal } from '@angular/core';
 
-import { CustomMessageChatComponent } from './custom-message-chat.component';
 import { PopupOnlyComponent } from './popup-only.component';
 import { SidebarOnlyComponent } from './sidebar-only.component';
 import { SupportChatComponent } from './support-chat.component';
 
-type Surface = 'inline' | 'custom-message' | 'popup' | 'sidebar';
+type Surface = 'inline' | 'popup' | 'sidebar';
 
 @Component({
   selector: 'app-chat-ui-demo',
   imports: [
     SupportChatComponent,
-    CustomMessageChatComponent,
     PopupOnlyComponent,
     SidebarOnlyComponent,
   ],
@@ -57,14 +59,8 @@ type Surface = 'inline' | 'custom-message' | 'popup' | 'sidebar';
       <div class="min-h-0 flex-1">
         @switch (surface()) {
           @case ('inline') {
-            <!-- Scope class for the guide's CSS block — this tab only. -->
-            <div class="support-chat h-full">
-              <app-support-chat />
-            </div>
-          }
-          @case ('custom-message') {
             <div class="h-full">
-              <app-custom-message-chat />
+              <app-support-chat />
             </div>
           }
           @case ('popup') {
@@ -112,7 +108,6 @@ export class ChatUiDemoComponent {
   protected readonly surface = signal<Surface>('inline');
   protected readonly tabs: ReadonlyArray<{ id: Surface; label: string }> = [
     { id: 'inline', label: 'Inline chat' },
-    { id: 'custom-message', label: 'Custom assistant message' },
     { id: 'popup', label: 'Popup' },
     { id: 'sidebar', label: 'Sidebar' },
   ];

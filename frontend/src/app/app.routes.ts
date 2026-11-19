@@ -24,6 +24,10 @@ export const routes: Routes = [
   { path: 'cmp-transports/demo', loadComponent: () => import('./pages/demos').then((m) => m.CmpTransportsDemo) },
   { path: 'cmp-markdown-mode/demo', loadComponent: () => import('./pages/demos').then((m) => m.CmpMarkdownModeDemo) },
   { path: 'cmp-from-a2ui/demo', loadComponent: () => import('./pages/demos').then((m) => m.CmpFromA2uiDemo) },
+  // HARNESS: demo routes for Multimodal Attachments, Agent Read-Only Context, Threads Drawer (2026-11-19).
+  { path: 'multimodal-attachments/demo', loadComponent: () => import('./pages/demos').then((m) => m.MultimodalAttachmentsDemo) },
+  { path: 'agent-readonly/demo', loadComponent: () => import('./pages/demos').then((m) => m.AgentReadonlyDemo) },
+  { path: 'threads-drawer/demo', loadComponent: () => import('./pages/demos').then((m) => m.ThreadsDrawerDemo) },
   {
     path: 'ide',
     loadComponent: () =>

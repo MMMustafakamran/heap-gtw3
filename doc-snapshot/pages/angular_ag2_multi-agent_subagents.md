@@ -2,11 +2,9 @@
 
 > Decompose work across multiple specialized agents with a visible delegation log.
 
-
 <!-- interactive demo: subagents -->
 
-
-## What is this?
+## What is this? [#what-is-this]
 
 Sub-agents are the canonical multi-agent pattern: a top-level
 **supervisor** LLM orchestrates one or more specialized **sub-agents**
@@ -18,7 +16,7 @@ This is fundamentally the same shape as tool-calling, but each "tool"
 is itself a full-blown agent with its own system prompt and (often) its
 own tools, memory, and model.
 
-## When should I use this?
+## When should I use this? [#when-should-i-use-this]
 
 Reach for sub-agents when a task has distinct specialized sub-tasks
 that each benefit from their own focus:
@@ -27,22 +25,202 @@ that each benefit from their own focus:
   different system prompt and temperature.
 - **Router + specialists**, where one agent classifies the request and
   dispatches to the right expert.
-- **Divide-and-conquer** — any problem that fits cleanly into parallel
+- **Divide-and-conquer**, for any problem that fits cleanly into parallel
   or sequential sub-problems.
 
 The example below uses the Research → Write → Critique shape as the
 canonical example.
 
-## Setting up sub-agents
+## Setting up sub-agents [#setting-up-sub-agents]
 
-<!-- setup skipped: subagents-setup is not bundled for ag2 -->
+<Steps>
+  <Step>
+    ### Choose how the supervisor delegates
 
-Each sub-agent is an isolated agent call with its own model, system
-prompt, and optional tools. They don't share memory or tools with the
-supervisor; the supervisor only ever sees what the sub-agent returns.
+    The demo below wraps each sub-agent in a delegation tool that you write,
+    which also records the delegation log in shared state. AG2 1.0 and later
+    also has a built-in shortcut: `Agent.as_tool()` turns a specialist into a
+    tool that the coordinator calls. The tool runs the specialist on its own
+    isolated stream with its own history, so the coordinator's context stays
+    small.
 
-```python
-# src/agents/subagents.py
+    ```bash
+    pip install "ag2[ag-ui,openai]>=1.1.2"
+    ```
+
+    Build each specialist as a plain `Agent` and hand it to the coordinator as
+    a tool. Only the coordinator is wrapped in `AGUIStream`:
+
+    ```python title="agent.py"
+    from typing import Annotated
+
+    from fastapi import FastAPI, Header
+    from fastapi.responses import StreamingResponse
+    from pydantic import Field
+
+    from ag2 import Agent, tool
+    from ag2.ag_ui import AGUIStream, RunAgentInput
+    from ag2.config import OpenAIResponsesConfig
+
+    @tool
+    def search_docs(
+        query: Annotated[str, Field(description="What to look up")],
+    ) -> str:
+        """Look a topic up in the product documentation."""
+        return f"Docs say: {query} is supported since v1.0."
+
+    researcher = Agent(
+        name="researcher",
+        prompt="You research topics using the documentation tool and report findings plainly.",
+        config=OpenAIResponsesConfig(model="gpt-6-luna"),
+        tools=[search_docs],
+    )
+
+    writer = Agent(
+        name="writer",
+        prompt="You turn research notes into a single tight paragraph.",
+        config=OpenAIResponsesConfig(model="gpt-6-luna"),
+    )
+
+    coordinator = Agent(
+        name="coordinator",
+        prompt=(
+            "You coordinate specialists. Delegate research to `task_researcher`, "
+            "then hand the findings to `task_writer`. Do not answer from memory."
+        ),
+        config=OpenAIResponsesConfig(model="gpt-6-luna"),
+        tools=[
+            researcher.as_tool(description="Research a topic in the product docs."),
+            writer.as_tool(description="Turn research notes into one paragraph."),
+        ],
+    )
+
+    stream = AGUIStream(coordinator)
+    app = FastAPI()
+
+    @app.post("/chat")
+    async def run_agent(
+        message: RunAgentInput,
+        accept: str | None = Header(None),
+    ) -> StreamingResponse:
+        return StreamingResponse(
+            stream.dispatch(message, accept=accept),
+            media_type=accept or "text/event-stream",
+        )
+    ```
+
+    `as_tool()` names the tool `task_<agent name>` by default (`task_researcher`
+    and `task_writer` above). Pass `name=` to override it. `description=` is
+    required: it is the only thing the coordinator's model reads when it decides
+    whether to delegate.
+
+  </Step>
+  <Step>
+    ### Know what reaches the frontend
+
+    Each `as_tool()` delegation produces one tool call and one AG-UI 1.0
+    subagent invocation with its own `subagentRunId`, so two parallel
+    delegations to the same agent can be told apart:
+
+    ```text
+    RUN_STARTED
+    TOOL_CALL_START      toolCallName: "task_researcher"
+    TOOL_CALL_ARGS
+    SUBAGENT_STARTED     subagentRunId: "4f1c…", name: "researcher", description: "<the objective>"
+    SUBAGENT_FINISHED    subagentRunId: "4f1c…", result: "<what it returned>"
+    TOOL_CALL_RESULT
+    TOOL_CALL_END
+    …
+    TEXT_MESSAGE_CHUNK
+    RUN_FINISHED
+    ```
+
+    - A failed delegation ends with `SUBAGENT_ERROR` carrying the message, and
+      the run carries on: the coordinator's model is told the delegation failed
+      and may recover. A cancelled or timed-out one also ends with
+      `SUBAGENT_ERROR` (`cancelled` or `expired`).
+    - The events carry no usage. The run's own usage already includes what the
+      delegation spent.
+    - If a specialist asks the human a question, it reaches the client like any
+      other interrupt, tagged with the invocation's `subagentRunId`.
+
+    Three things to know before you build UI on top of it:
+
+    - **Delegations are ordinary tool calls.** Render one with `useRenderTool`,
+      or let the default tool renderer show it. A named `useRenderTool`
+      registration needs a `parameters` schema. Every `as_tool()` delegation
+      takes the same two arguments, `objective` and an optional `context`.
+    - **The specialist's own tool calls stay inside its stream.** `search_docs`
+      above runs in the researcher's isolated stream, so it does not appear as a
+      separate `TOOL_CALL_*` pair in the coordinator's AG-UI output. If you need
+      that visibility, give the specialist its own endpoint instead of
+      delegating to it.
+    - **Shared state does not flow back out of a specialist.** A delegation gets
+      a *copy* of the coordinator's conversation variables, and writes that the
+      specialist makes to `context.variables` are not merged back. A specialist
+      that writes state changes nothing the UI sees, and nothing fails. Return
+      the value from the delegation and have the coordinator write it instead.
+      Dependencies are copied in the same way, so `Inject(...)` keeps working
+      inside a specialist.
+
+  </Step>
+  <Step>
+    ### Track delegations with `agent.subscribe`
+
+    For a side panel or a progress list, subscribe to the invocation events on
+    the agent from `useAgent`. A run is still running until a finished or error
+    event with its `subagentRunId` arrives:
+
+    ```tsx title="components/agent-panel.tsx"
+    import type {
+      SubagentErrorEvent,
+      SubagentFinishedEvent,
+      SubagentStartedEvent,
+    } from "@ag-ui/client";
+    import { useAgent } from "@copilotkit/react-core/v2";
+    import { useEffect, useState } from "react";
+
+    export function SubagentPanel() {
+      const { agent } = useAgent({ agentId: "my_agent" });
+      const [started, setStarted] = useState<SubagentStartedEvent[]>([]);
+      const [finished, setFinished] = useState<Record<string, SubagentFinishedEvent>>({});
+      const [failed, setFailed] = useState<Record<string, SubagentErrorEvent>>({});
+
+      useEffect(() => {
+        const subscription = agent.subscribe({
+          onRunStartedEvent: () => {
+            setStarted([]);
+            setFinished({});
+            setFailed({});
+          },
+          onSubagentStartedEvent: ({ event }) => setStarted((all) => [...all, event]),
+          onSubagentFinishedEvent: ({ event }) =>
+            setFinished((all) => ({ ...all, [event.subagentRunId]: event })),
+          onSubagentErrorEvent: ({ event }) =>
+            setFailed((all) => ({ ...all, [event.subagentRunId]: event })),
+        });
+        return () => subscription.unsubscribe();
+      }, [agent]);
+
+      return (
+        <ul>
+          {started.map((run) => (
+            <li key={run.subagentRunId}>
+              {run.name}:{" "}
+              {failed[run.subagentRunId] ? "failed" : finished[run.subagentRunId] ? "done" : "running…"}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    ```
+
+  </Step>
+</Steps>
+
+Define one agent per role, each with its own system prompt:
+
+```python title="src/agents/subagents.py"
 import logging
 import uuid
 from textwrap import dedent
@@ -128,24 +306,30 @@ _critique_agent = Agent(
 )
 ```
 
+Each sub-agent is an isolated agent call with its own model, system
+prompt, and optional tools. They don't share memory or tools with the
+supervisor; the supervisor only ever sees what the sub-agent returns.
+
 Keep sub-agent system prompts narrow and focused. The point of this pattern
 is that each one does one thing well. If a sub-agent needs to know
 the whole user context to do its job, that's a signal the boundary is
 wrong.
 
-## Exposing sub-agents as tools
+## Exposing sub-agents as tools [#exposing-sub-agents-as-tools]
 
 The supervisor delegates by calling tools. Each delegation tool is a thin
 wrapper around a specialized agent call that:
 
 1. Runs the sub-agent on the supplied `task` string.
-2. Records the delegation into a `delegations` slot in shared agent
-   state (so the UI can render a live log).
+2. Records the delegation into a `delegations` slot in [shared agent
+   state](/angular/ag2/shared-state) (so the UI can render a live log). In the Built-in Agent
+   example, the tool code below does not write this entry. The agent
+   loop writes it: after each delegation tool result, the loop emits a
+   `STATE_DELTA` event that sets `/delegations`.
 3. Returns the sub-agent's final message as the tool result, which the
    supervisor sees on its next turn.
 
-```python
-# src/agents/subagents.py
+```python title="src/agents/subagents.py"
 import logging
 import uuid
 from textwrap import dedent
@@ -381,8 +565,9 @@ async def critique_agent(
     """
     return await _run_delegation(ctx, "critique_agent", _critique_agent, task)
 
-
 ```
+
+If the excerpt uses a header-forwarding helper, such as `forwardingFetch` or `HeaderForwardingMiddleware`, leave it out of your app. The showcase uses it only to send request headers to its test server.
 
 This is where CopilotKit's shared-state channel earns its keep: the
 supervisor's tool calls mutate `delegations` as they happen, and the
@@ -390,27 +575,23 @@ frontend renders every new entry live.
 
 <Callout type="warn">
   Give every delegation a stable `id` and merge new entries by that `id`. The
-  client sends its copy of shared state back as run input on every run, so a
-  slot that blindly appends whatever it receives — a LangGraph
-  `Annotated[list, operator.add]` reducer, for example — concatenates the
-  entries the client just echoed onto the ones the agent already has, and the
-  log doubles when a thread is continued.
+  client sends its copy of shared state back as run input on every run. A slot
+  that appends everything it receives, such as a LangGraph
+  `Annotated[list, operator.add]` reducer, adds those entries again. Then the
+  log doubles when a thread continues. The LangGraph excerpt above uses
+  `operator.add`, so in your app, write a reducer that merges by `id`.
 </Callout>
 
-## Rendering a live delegation log
+## Rendering a live delegation log [#rendering-a-live-delegation-log]
 
 On the frontend, the delegation log is a reactive render of the
 `delegations` slot.
-
-
-
 
 Read the selected agent's state through `injectAgentStore`, derive the
 delegations with `computed`, and register one typed renderer for each sub-agent
 tool. The Angular Showcase uses this source:
 
-```typescript
-// features/agent-state/agent-state-feature.component.ts
+```typescript title="features/agent-state/agent-state-feature.component.ts"
   private readonly agentStore = injectAgentStore(this.agentId);
   protected readonly delegations = computed(() =>
     readDelegations(this.agentStore().state()),
@@ -429,14 +610,8 @@ tool. The Angular Showcase uses this source:
   }
 ```
 
+To stream each sub-agent's output token by token inside its log entry, see
+[State streaming](/angular/ag2/shared-state/streaming).
 
-The result: as the supervisor fans work out to its sub-agents, the log
-grows in real time, giving the user visibility into a process that
-would otherwise be a long opaque spinner.
-
-## Related
-
-- **[Shared State](/angular/ag2/guides/shared-state)** — the channel that makes the
-  delegation log live.
-- **[State streaming](/angular/ag2/guides/shared-state)** — stream
-  *individual* sub-agent outputs token-by-token inside each log entry.
+The log grows in real time as the supervisor delegates. The user sees each
+step while it happens, not a long spinner.

@@ -1,14 +1,14 @@
 // threads : custom thread list start
 /**
  * "For a custom thread list, use injectThreads", verbatim.
- * https://docs.copilotkit.ai/angular/ag2/guides/threads-memory-attachments-headless
+ * https://docs.copilotkit.ai/angular/ag2/headless-threads (re-checked verbatim 2026-11-19)
  */
 
-import { Component } from '@angular/core';
-import { injectThreads } from '@copilotkit/angular';
+import { Component } from "@angular/core";
+import { injectThreads } from "@copilotkit/angular";
 
 @Component({
-  selector: 'app-thread-list',
+  selector: "app-thread-list",
   template: `
     <button type="button" (click)="threads.startNewThread()">
       New conversation
@@ -32,7 +32,7 @@ import { injectThreads } from '@copilotkit/angular';
 export class ThreadListComponent {
   // threads : inject threads start
   readonly threads = injectThreads({
-    agentId: 'support',
+    agentId: "support",
     limit: 20,
   });
   // threads : inject threads end
