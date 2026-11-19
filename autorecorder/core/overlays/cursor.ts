@@ -236,24 +236,23 @@ export async function humanScrollDown(
       // Docs renamed their layout id (nd-docs-layout -> fd-spacious-layout, 2026-11). Try the
       // known ids, then fall back to the tallest element that actually scrolls, so a rename
       // never again leaves the skim inching 300 px at a time.
-      const scrolls = (el: Element | null): el is HTMLElement => {
-        if (!(el instanceof HTMLElement) || el.scrollHeight <= el.clientHeight + 40) return false;
-        const oy = getComputedStyle(el).overflowY;
-        return oy === 'auto' || oy === 'scroll' || oy === 'overlay';
-      };
-      const known = [
+      // (No named inner functions here: tsx adds a __name helper the page doesn't have.)
+      let nested: HTMLElement | undefined;
+      for (const el of [
         document.getElementById('fd-spacious-layout'),
         document.getElementById('nd-docs-layout'),
         document.querySelector('main'),
         document.querySelector('article'),
-      ].find(scrolls);
-      let nested: HTMLElement | undefined = known ?? undefined;
+      ]) {
+        if (el instanceof HTMLElement && el.scrollHeight > el.clientHeight + 40
+          && /auto|scroll|overlay/.test(getComputedStyle(el).overflowY)) { nested = el; break; }
+      }
       if (!nested) {
         let best = 0;
         for (const el of Array.from(document.querySelectorAll('body *'))) {
-          if (!scrolls(el) || el.clientHeight < window.innerHeight * 0.5) continue;
+          if (!(el instanceof HTMLElement) || el.clientHeight < window.innerHeight * 0.5) continue;
           const room = el.scrollHeight - el.clientHeight;
-          if (room > best) { best = room; nested = el; }
+          if (room > 40 && room > best && /auto|scroll|overlay/.test(getComputedStyle(el).overflowY)) { best = room; nested = el; }
         }
       }
 

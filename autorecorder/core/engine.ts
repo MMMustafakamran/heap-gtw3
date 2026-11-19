@@ -83,13 +83,14 @@ async function humanScrollCodeViewport(
 async function waitForDocSettled(page: Page, timeoutMs: number): Promise<boolean> {
   return page
     .evaluate(async (timeout) => {
-      const h = () => Math.max(document.documentElement.scrollHeight,
-        ...Array.from(document.querySelectorAll('main, article, #fd-spacious-layout, #nd-docs-layout')).map((e) => (e as HTMLElement).scrollHeight));
+      // (No named inner functions here: tsx adds a __name helper the page doesn't have.)
+      const sel = 'main, article, #fd-spacious-layout, #nd-docs-layout';
       const started = Date.now();
-      let last = h(), stableSince = Date.now();
+      let last = -1, stableSince = Date.now();
       while (Date.now() - started < timeout) {
         await new Promise((r) => setTimeout(r, 200));
-        const now = h();
+        let now = document.documentElement.scrollHeight;
+        for (const e of Array.from(document.querySelectorAll(sel))) now = Math.max(now, (e as HTMLElement).scrollHeight);
         if (now !== last) { last = now; stableSince = Date.now(); }
         else if (Date.now() - stableSince >= 1000 && document.readyState !== 'loading') return true;
       }

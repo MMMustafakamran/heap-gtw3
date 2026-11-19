@@ -8,7 +8,7 @@
  * showFinding). ✅ pages are plain working takes (AUTORECORDER.md sections 2-3).
  */
 import { execFile } from 'node:child_process';
-import { appendFileSync, mkdirSync } from 'node:fs';
+import { appendFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { type Page } from 'playwright';
 
@@ -238,9 +238,46 @@ export const runVoiceAction: PageActionHandler = async (page, config, _root, ctx
       mark('error', 'no mic button in the composer');
       ctx.fail('No mic in the composer: the runtime has no transcription service, the page\'s "Voice backend setup" link points to a #backend section that does not exist (FINDINGS.md #3).');
     }
-    await glideTo(page, page.locator('copilot-chat-input, textarea').first(), 2500);
-    const msgCount = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
-    await settle(page, msgCount, ctx);
+    // The linked Voice backend setup's own check: "Click the mic, say "What is the weather in Tokyo?",
+    // and click the mic again. The text appears in the composer, ready to send."
+    // HARNESS: a runner has no microphone, so getUserMedia is replaced with a stream that plays a
+    // recorded phrase (assets/mic-what-is-the-weather-in-tokyo.mp3); nothing is drawn on the page.
+    const clip = readFileSync(new URL('../assets/mic-what-is-the-weather-in-tokyo.mp3', import.meta.url)).toString('base64');
+    const clipMs = await page.evaluate(async (b64: string) => {
+      const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+      const ctxA = new AudioContext();
+      const buf = await ctxA.decodeAudioData(bytes.buffer);
+      (window as any).__fakeMic = { ctxA, buf };
+      navigator.mediaDevices.getUserMedia = async () => {
+        const src = ctxA.createBufferSource();
+        src.buffer = buf;
+        const dest = ctxA.createMediaStreamDestination();
+        src.connect(dest);
+        await ctxA.resume();
+        src.start();
+        return dest.stream;
+      };
+      return Math.round(buf.duration * 1000);
+    }, clip);
+    const composer = page.locator('copilot-chat-input textarea, textarea').first();
+    await glideTo(page, composer, 1500);
+    mark('action', 'mic on, phrase played');
+    await glideClick(page, mic.first());
+    await sleep(clipMs + 1200);
+    await glideClick(page, mic.first());
+    let said = '';
+    for (let i = 0; i < 40 && !/tokyo|weather/i.test(said); i++) {
+      await sleep(500);
+      said = (await composer.inputValue().catch(() => '')) || '';
+    }
+    if (!/tokyo|weather/i.test(said)) {
+      mark('error', 'no transcript in the composer');
+      ctx.fail(`Voice input: after the mic recorded "What is the weather in Tokyo?", the composer shows "${said.slice(0, 120)}" (no transcript).`);
+    }
+    await glideTo(page, composer, 2000);
+    const before = await page.locator('copilot-chat-assistant-message').count();
+    await composer.press('Enter');
+    await settle(page, before, ctx);
     const card = page.locator('app-weather-card').last();
     const shown = await card.waitFor({ state: 'visible', timeout: 30000 }).then(() => true).catch(() => false);
     if (shown) await glideTo(page, card, 2500);
