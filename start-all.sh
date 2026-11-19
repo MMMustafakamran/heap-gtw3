@@ -6,7 +6,10 @@
 #   4240 ng serve (doc: 4200)
 #   8242 the Components and surfaces page's TanStack runtime (frontend/components-runtime.mts; doc: server.ts on 8200).
 #        The doc has you `export OPENAI_API_KEY` in its terminal: loaded from backend/.env here.
+#   8243 Threads runtime with CopilotKit Intelligence (frontend/server.threads.ts; the threads pages show
+#        no runtime). Key CPK_INTELLIGENCE_API_KEY from backend/.env (CI) or frontend/.env.intelligence (local).
 # Key: backend/.env (OPENAI_API_KEY; see backend/.env.example).
+# HARNESS: 8240 gets OPENAI_TRANSCRIPTION_API_KEY (Voice backend setup) from the same OPENAI_API_KEY.
 cd "$(dirname "$0")"
 mkdir -p logs
 # Logs the recorder appends to during a take (doc snippets that don't compile / import).
@@ -21,7 +24,8 @@ for _ in $(seq 1 90); do
 done
 
 cd frontend
-(npx tsx server.ts > ../logs/runtime-8240.log 2>&1) &
+(set -a; . ../backend/.env; set +a; export OPENAI_TRANSCRIPTION_API_KEY="${OPENAI_TRANSCRIPTION_API_KEY:-$OPENAI_API_KEY}"; npx tsx server.ts > ../logs/runtime-8240.log 2>&1) &  # HARNESS: transcription key
+(set -a; . ../backend/.env; set +a; npx tsx server.threads.ts > ../logs/threads-runtime-8243.log 2>&1) &  # HARNESS: Threads runtime
 (set -a; . ../backend/.env; set +a; npx tsx components-runtime.mts > ../logs/components-runtime-8242.log 2>&1) &
 (npm start > ../logs/angular-4240.log 2>&1) &
 wait

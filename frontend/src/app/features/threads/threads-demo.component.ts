@@ -3,7 +3,8 @@
  * `injectThreads` and the "Resume a specific thread" chat. The drawer moved to the
  * Threads Drawer page (conversations.component.ts kept on disk, no longer mounted here).
  */
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CopilotKit } from '@copilotkit/angular'; // HARNESS: per-page runtime switch
 
 import { ResumeChatComponent } from './resume-chat.component';
 import { ThreadListComponent } from './thread-list.component';
@@ -33,4 +34,11 @@ import { ThreadListComponent } from './thread-list.component';
     </div>
   `,
 })
-export class ThreadsDemoComponent {}
+export class ThreadsDemoComponent {
+  // HARNESS: threads need CopilotKit Intelligence; point this page at the Threads runtime
+  // (frontend/server.threads.ts, 8243). Set in the constructor so it runs before the child
+  // components (drawer / injectThreads) are created.
+  constructor() {
+    inject(CopilotKit).updateRuntime({ runtimeUrl: 'http://localhost:8243/api/copilotkit' }); // HARNESS: Threads runtime (Intelligence)
+  }
+}

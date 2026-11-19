@@ -32,6 +32,7 @@ import { CopilotRuntime } from "@copilotkit/runtime/v2";
 import { createCopilotNodeListener } from "@copilotkit/runtime/v2/node";
 import { HttpAgent } from "@ag-ui/client";
 import { authApp } from "./auth-runtime"; // HARNESS: Authentication guide hook, served under /auth
+import { createTranscriptionService } from "./transcription-service"; // HARNESS: Voice backend setup (docs.copilotkit.ai/voice#backend), file copied verbatim
 
 const agentUrl =
   process.env["AG2_AGENT_URL"] ?? "http://localhost:8241/agent/"; // HARNESS: backend port 8241 (workspace port plan)
@@ -47,6 +48,7 @@ const runtime = new CopilotRuntime({
   // a2ui : enable a2ui middleware start
   a2ui: {},
   // a2ui : enable a2ui middleware end
+  transcriptionService: createTranscriptionService(), // HARNESS: the Voice backend setup shows this only in a Next.js route; same runtime option on the Node listener
 });
 // quickstart : copilot runtime end
 

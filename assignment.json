@@ -46,21 +46,21 @@
       "child": false,
       "docPath": "https://docs.copilotkit.ai/angular/ag2",
       "reachable": "sidebar",
-      "status": "❌",
+      "status": "✅",
       "findings": [
         1,
         11
       ],
       "notes": [
-        "Issue: the backend step is only a callout: no AG2 agent, no runtime server and no @ag-ui/client install; the linked runtime page shows only a Next.js route, so the chat has nothing to talk to without guessing."
+        "Note: the backend step is only a callout. The AG2 agent is on the AG2 quickstart (/ag2/quickstart, Connect your own AG2 agent), the Node runtime server.ts on the Angular quickstart (/angular), and the HttpAgent binding on the Copilot Runtime page; @ag-ui/client is not in the install step."
       ],
       "block": null,
       "links": [
         {
-          "text": "Not Working",
+          "text": "Quickstart - Angular",
           "clip": "AG2-angular-01-Quickstart",
           "loom": "https://www.loom.com/share/bc9c737d83374356927a60cb2508e656",
-          "narration": "narration/scripts/AG2-angular-01-Quickstart.json",
+          "narration": null,
           "filmed": "2026-11-16"
         }
       ],
@@ -165,20 +165,20 @@
       "child": false,
       "docPath": "generative-ui/a2ui",
       "reachable": "sidebar",
-      "status": "❌",
+      "status": "✅",
       "findings": [
         2
       ],
       "notes": [
-        "Issue: productCatalog, dynamicString and the other catalog pieces are never defined, so the app won't build and A2UI stays off."
+        "Note: productCatalog and dynamicString are never defined; the page's createAngularCatalog(..., { includeBasicCatalog: true }) or basicCatalog from @copilotkit/angular/a2ui (shown on the Copilot Runtime page) gives a catalog."
       ],
       "block": null,
       "links": [
         {
-          "text": "Issue",
+          "text": "A2UI - Angular",
           "clip": "AG2-angular-05-A2ui",
           "loom": "https://www.loom.com/share/f9a3f0b83f5c4e23972b80d61c3e8f12",
-          "narration": "narration/scripts/AG2-angular-05-A2ui.json",
+          "narration": null,
           "filmed": "2026-11-09"
         }
       ],
@@ -196,12 +196,12 @@
       "child": false,
       "docPath": "voice",
       "reachable": "sidebar",
-      "status": "❌",
+      "status": "✅",
       "findings": [
         3
       ],
       "notes": [
-        "Issue: the voice backend setup link points to a missing #backend anchor, so there's no transcription service and no mic; the page's tool renderer also uses WeatherCardComponent, which it never defines."
+        "Note: the voice backend setup link goes to the generic Voice page, which shows the runtime only as a Next.js route; its transcription service works on the Node runtime."
       ],
       "block": null,
       "links": [
@@ -209,7 +209,7 @@
           "text": "Issue",
           "clip": "AG2-angular-06-VoiceMultimodal",
           "loom": "https://www.loom.com/share/7bd699ec98c4401885e20af47a2cf56e",
-          "narration": "narration/scripts/AG2-angular-06-VoiceMultimodal.json",
+          "narration": null,
           "filmed": "2026-11-09"
         }
       ],
@@ -784,6 +784,5 @@
       },
       "links": []
     }
-  ],
-  "quickstartBlocked": "the Angular quickstart has no AG2 agent, no runtime server and no @ag-ui/client install, so a reader has no working Angular app to build on"
+  ]
 }

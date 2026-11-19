@@ -66,3 +66,6 @@ narration/**/*.fit.json
 *.env
 *.env.txt
 reference-*.wav
+# HARNESS: local Intelligence key for the Threads runtime (frontend/server.threads.ts)
+.env.intelligence
+*/.env.intelligence

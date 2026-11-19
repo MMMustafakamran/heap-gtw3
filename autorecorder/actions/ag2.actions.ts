@@ -26,18 +26,6 @@ import { glideClick, glideTo } from './glide-click';
 // ---------------------------------------------------------------------------------------------
 
 export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
-  quickstart: [
-    { text: 'Configure Copilot Runtime to register this backend', caption: 'The backend step is only this callout: no AG2 code (FINDINGS.md #1)' },
-    { text: 'Start the selected agent backend and Copilot Runtime', caption: 'No page gives these commands for AG2 + Angular' },
-  ],
-  a2ui: [
-    { text: 'catalog: productCatalog,', caption: 'productCatalog is never defined (FINDINGS.md #2)' },
-    { text: 'Title: { props: z.object({ text: dynamicString }) },', caption: 'dynamicString is never defined' },
-  ],
-  'voice-multimodal': [
-    { text: 'Follow the Voice backend setup to add a dedicated Runtime', caption: 'The link points to a #backend anchor that does not exist (FINDINGS.md #3)' },
-    { text: 'component: WeatherCardComponent,', caption: 'WeatherCardComponent is never defined on the Voice page (defined on Render a tool result)' },
-  ],
   'shared-state': [
     { text: 'Agent and application both read and write the value', caption: 'No AG2 code shows how the agent reads this state (FINDINGS.md #4)' },
     { text: 'agent.setState({ ...current, priority });', caption: 'The write the agent never sees' },
@@ -93,29 +81,11 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
 registerDocEvidence(FINDING_EVIDENCE);
 
 export const FINDING_NOTES: Record<string, string> = {
-  quickstart: [
-    "page says connect the selected ag2 backend and run backend runtime and angular app",
-    "following it the chat has nothing to talk to, only works with a backend i wrote myself",
-    "backend step is just a callout,no ag2 agent no runtime server.ts, @ag-ui/client not in the install",
-    "the runtime page it links only has a next.js route,no commands to start anything for angular",
-  ].join('\n'),
   'generative-ui-components': [
     "page says add provideGenerativeUI with standardUI and the agent renders real components",
     "asked for a product card, agent just wrote html code as text,no card",
     "provideGenerativeUI comes from @copilotkit/angular/generative-ui",
     "that entry point isnt in the latest @copilotkit/angular on npm,cannot find module so ng serve wont build, and ./cart.store is never shown",
-  ].join('\n'),
-  'a2ui': [
-    "page says a catalog is required for a2ui and passes catalog productCatalog",
-    "asked for a flight card, nothing renders,console says a2ui stays off",
-    "productCatalog, dynamicString, createAngularCatalog are never defined anywhere",
-    "typescript cannot find name productCatalog so ng serve fails",
-  ].join('\n'),
-  'voice-multimodal': [
-    "page says the mic shows in the composer once the runtime has a transcription service,follow the voice backend setup",
-    "no mic button in the chat at all",
-    "the voice backend setup link goes to #backend on the same page and that section doesnt exist",
-    "so the transcription route is never shown and audioFileTranscriptionEnabled stays false",
   ].join('\n'),
   'shared-state': [
     "page says agent and app both read and write the value",
