@@ -38,7 +38,7 @@ on:
         type: boolean
         default: false
       mode:
-        description: 'record = film clips (normal run); probe = headless probe of every page, 3 runs each, no clips (owner, 2026-11-18)'
+        description: 'record = film clips (normal run); probe = headless probe of every page, 1 run (failing pages 2), no clips (owner, 2026-11-18)'
         required: false
         type: choice
         options: [record, probe]
@@ -272,6 +272,8 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_TRANSCRIPTION_API_KEY: ${{ secrets.OPENAI_API_KEY }}   # HARNESS: Voice page transcription service (same OpenAI key)
+      CPK_INTELLIGENCE_API_KEY: ${{ secrets.CPK_INTELLIGENCE_API_KEY }}   # HARNESS: Threads runtime (8243)
     steps:
       - uses: actions/checkout@v4
       - name: Today's lockfiles from the plan job
@@ -347,6 +349,8 @@ jobs:
           set -eu
           [ -n "${OPENAI_API_KEY:-}" ] || echo "::warning::secret OPENAI_API_KEY is not set; the AG2 agent will fail"
           printf 'OPENAI_API_KEY=%s\n' "$OPENAI_API_KEY" > backend/.env
+          [ -n "${CPK_INTELLIGENCE_API_KEY:-}" ] || echo "::warning::secret CPK_INTELLIGENCE_API_KEY is not set; the threads pages will show the locked state"
+          printf 'CPK_INTELLIGENCE_API_KEY=%s\n' "${CPK_INTELLIGENCE_API_KEY:-}" >> backend/.env  # HARNESS: Threads runtime key
 
       - name: Start servers (start-all.sh)
         run: |
@@ -354,7 +358,7 @@ jobs:
           mkdir -p logs
           nohup bash start-all.sh > logs/start-all.log 2>&1 &
           # "localhost", not 127.0.0.1: the LangGraph JS server binds IPv6 ::1 only.
-          for hp in 8241/health 8240/api/copilotkit/info 8242/api/copilotkit/info 4240/; do
+          for hp in 8241/health 8240/api/copilotkit/info 8242/api/copilotkit/info 8243/api/copilotkit/info 4240/; do
             port=${hp%%/*}; path=/${hp#*/}
             ok=
             tries=120; case "$port" in 8???) tries=48 ;; esac   # a dead backend costs 4 min, not 10
@@ -433,6 +437,8 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_TRANSCRIPTION_API_KEY: ${{ secrets.OPENAI_API_KEY }}   # HARNESS: Voice page transcription service (same OpenAI key)
+      CPK_INTELLIGENCE_API_KEY: ${{ secrets.CPK_INTELLIGENCE_API_KEY }}   # HARNESS: Threads runtime (8243)
     steps:
       - uses: actions/checkout@v4
       - name: Today's lockfiles from the plan job
@@ -508,6 +514,8 @@ jobs:
           set -eu
           [ -n "${OPENAI_API_KEY:-}" ] || echo "::warning::secret OPENAI_API_KEY is not set; the AG2 agent will fail"
           printf 'OPENAI_API_KEY=%s\n' "$OPENAI_API_KEY" > backend/.env
+          [ -n "${CPK_INTELLIGENCE_API_KEY:-}" ] || echo "::warning::secret CPK_INTELLIGENCE_API_KEY is not set; the threads pages will show the locked state"
+          printf 'CPK_INTELLIGENCE_API_KEY=%s\n' "${CPK_INTELLIGENCE_API_KEY:-}" >> backend/.env  # HARNESS: Threads runtime key
 
       - name: Start servers (start-all.sh)
         run: |
@@ -515,7 +523,7 @@ jobs:
           mkdir -p logs
           nohup bash start-all.sh > logs/start-all.log 2>&1 &
           # "localhost", not 127.0.0.1: the LangGraph JS server binds IPv6 ::1 only.
-          for hp in 8241/health 8240/api/copilotkit/info 8242/api/copilotkit/info 4240/; do
+          for hp in 8241/health 8240/api/copilotkit/info 8242/api/copilotkit/info 8243/api/copilotkit/info 4240/; do
             port=${hp%%/*}; path=/${hp#*/}
             ok=
             tries=120; case "$port" in 8???) tries=48 ;; esac   # a dead backend costs 4 min, not 10
@@ -534,13 +542,13 @@ jobs:
             echo "up: :$port$path"
           done
 
-      - name: Probe (headless, page checks, 3 runs each)
+      - name: Probe (headless, page checks, 1 run, failing pages 2)
         env:
           PAGES: ${{ matrix.pages }}
         run: |
           set +e
           cd autorecorder
-          npx tsx ../.qa/tools/probe.mts ${PAGES//,/ } --health --warm --repeat 3 --parallel 3 2>&1 | tee ../logs/probe.log
+          npx tsx ../.qa/tools/probe.mts ${PAGES//,/ } --health --warm --repeat 1 --retry-fail 1 --parallel 3 2>&1 | tee ../logs/probe.log
           exit 0
 
       - name: Upload probe-${{ matrix.shard }}
