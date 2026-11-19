@@ -11,6 +11,7 @@ import { CopilotChat } from '@copilotkit/angular'; // HARNESS
 @Component({
   selector: 'app-resume-chat', // HARNESS
   imports: [CopilotChat], // HARNESS
+  styles: [':host { display: block; width: 100%; height: 520px; }'], // HARNESS: layout only, the page shows no host
   template: `
     <copilot-chat agentId="support" [threadId]="selectedThreadId()" />
   `,
