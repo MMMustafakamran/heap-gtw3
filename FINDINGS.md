@@ -28,7 +28,8 @@ Stack: `@copilotkit/angular` 0.6.0 (npm latest; declared ^0.6.0), `@copilotkit/r
 ### [Threads Drawer](https://docs.copilotkit.ai/angular/ag2/prebuilt-components/copilot-threads-drawer)
 **#18 The threads drawer shows an empty panel: no thread list and no locked state.**
 - **Doc:** "The drawer reads the platform's `threads` license feature and shows its locked state when that feature is unavailable." The page never says what serves the thread list or that the Intelligence Platform is needed.
-- **Result:** after a chat, `CopilotThreadsDrawer` renders an empty panel, neither a list nor the locked state (0/3 probe runs, 2026-11-19). Same result on Antigravity Angular.
+- **Result:** after a chat (the agent replies), `CopilotThreadsDrawer` renders an empty panel, neither a list nor the locked state, also on a runtime with `CopilotKitIntelligence` and a valid key (`/info`: `threadEndpoints.list: true`; the Headless Threads list on the same runtime fills). 0/2 CI and 0/2 local probe runs, 2026-11-19. Same result on Antigravity Angular.
+- **Confirmed by harness:** `frontend/server.threads.ts` (Intelligence runtime on 8243; no page shows one).
 
 ## Minor notes
 - #3 Voice: the "Voice backend setup" link goes to the generic /voice#backend page, which shows the transcription runtime only as a Next.js route with demo helpers (`@/lib/...`); its `transcription-service.ts` works on the Node runtime (mic shows, 2026-11-19). `WeatherCardComponent` is only on Tool rendering. The callout's "align on openai 5.x" fails with zod 4 (ERESOLVE, `openai@5` peer `zod@^3`); with only `@copilotkit/voice` installed, `import { OpenAI } from "openai"` gives TS2322 (build-only).
