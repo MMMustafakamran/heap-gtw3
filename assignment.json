@@ -771,12 +771,12 @@
       "child": false,
       "docPath": "prebuilt-components/copilot-threads-drawer",
       "reachable": "sidebar",
-      "status": "❌",
+      "status": "✅",
       "findings": [
         18
       ],
       "notes": [
-        "Issue: the threads drawer renders an empty panel, no thread list and no locked state; the page never says what serves the list or that Intelligence is needed."
+        "Note: the drawer lists threads only with CopilotKit Intelligence on the runtime; the page doesn't say so or show the runtime code."
       ],
       "block": null,
       "review": {

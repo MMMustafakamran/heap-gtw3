@@ -35,9 +35,6 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'from ._state import publish_state', caption: '_state is never shown either', clickTab: 'Code' },
     { text: 'registerRenderToolCall(subAgentRendererConfig(name));', caption: 'subAgentRendererConfig / readDelegations are never defined' },
   ],
-  'threads-drawer': [
-    { text: 'shows its locked state when that feature is unavailable', caption: 'Neither a list nor the locked state shows; nothing says what serves the list (FINDINGS.md #18)' },
-  ],
   // Components and surfaces pages (Angular tab; the doc opens on it via docStorage). FINDINGS.md #14-#16.
   'cmp-components': [
     { text: 'import { provideGenerativeUI, standardUI } from "@copilotkit/angular/generative-ui";', caption: 'The entry point is not in @copilotkit/angular 0.6.0: TS2307 (FINDINGS.md #14)' },
@@ -144,11 +141,6 @@ export const FINDING_NOTES: Record<string, string> = {
     "page says turn on markdown mode with transport markdown on provideGenerativeUI",
     "no a2ui blocks rendered, agent just wrote html code as text",
     "provideGenerativeUI is from @copilotkit/angular/generative-ui, that entry point isnt in the latest @copilotkit/angular on npm,cannot find module so ng serve wont build",
-  ].join('\n'),
-  'threads-drawer': [
-    "page says the drawer lists ur threads or shows a locked state when the threads feature isnt there",
-    "after chatting the drawer is just an empty panel,no list no lock",
-    "page never says what serves the thread list or that u need intelligence for it",
   ].join('\n'),
   'cmp-from-a2ui': [
     "page says move ur a2ui catalog to the new engine with createGenerativeUI",
@@ -443,12 +435,14 @@ export const runAgentReadonlyAction: PageActionHandler = async (page, config, _r
 
 /** Threads Drawer: chat once, then read the drawer: a list or its locked state must show. */
 export const runThreadsDrawerAction: PageActionHandler = async (page, config, _root, ctx) => {
+  const drawer = page.locator('copilot-threads-drawer').first();
+  await glideTo(page, drawer, 2500);
   const msgCount = await sendPrompt(page, config.prompt, { timeoutMs: 15000 });
   await settle(page, msgCount, ctx);
   await sleep(3000);
-  const drawer = page.locator('copilot-threads-drawer').first();
-  const text = (await drawer.innerText().catch(() => '')).trim();
+  await drawer.scrollIntoViewIfNeeded().catch(() => {});
   await glideTo(page, drawer, 2500);
+  const text = (await drawer.textContent().catch(() => '') ?? '').trim();
   ctx.warn(`Drawer text: ${text.slice(0, 300).replace(/\s+/g, ' ')}`);
   if (!text) mark('error', 'drawer renders empty: no list, no locked state');
   await writeFinding(page, config.id, config);
