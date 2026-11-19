@@ -84,7 +84,7 @@
       "block": null,
       "links": [
         {
-          "text": "Chat UI and Customization - Angular",
+          "text": "Prebuilt Components - Angular",
           "clip": "AG2-angular-02-ChatUi",
           "loom": "https://www.loom.com/share/3d9729f3b5b3442ba2fd9f3913df98a8",
           "narration": null,
@@ -115,7 +115,7 @@
       "block": null,
       "links": [
         {
-          "text": "Frontend tools and generative UI - Angular",
+          "text": "Frontend Tools - Angular",
           "clip": "AG2-angular-03-FrontendToolsGenerativeUi",
           "loom": "https://www.loom.com/share/fbd18938588642a18bb14b9cbdc68aea",
           "narration": null,
@@ -142,15 +142,7 @@
         "Note: overview page with links only, no code to test (2026-11-19)."
       ],
       "block": null,
-      "links": [
-        {
-          "text": "Not Working",
-          "clip": "AG2-angular-04-NativeGenerativeUi",
-          "loom": "https://www.loom.com/share/4a79b3db0fc7489ab0f35380cfc043b7",
-          "narration": "narration/scripts/AG2-angular-04-NativeGenerativeUi.json",
-          "filmed": "2026-11-09"
-        }
-      ],
+      "links": [],
       "review": {
         "verdict": null,
         "approvedAt": null,
@@ -206,7 +198,7 @@
       "block": null,
       "links": [
         {
-          "text": "Issue",
+          "text": "Voice - Angular",
           "clip": "AG2-angular-06-VoiceMultimodal",
           "loom": "https://www.loom.com/share/7bd699ec98c4401885e20af47a2cf56e",
           "narration": null,
@@ -233,7 +225,7 @@
       "block": null,
       "links": [
         {
-          "text": "Human-in-the-loop and interrupts - Angular",
+          "text": "HITL Overview - Angular",
           "clip": "AG2-angular-07-HumanInTheLoop",
           "loom": "https://www.loom.com/share/ba0daede65ed4a779aa98fa92902cfb1",
           "narration": null,
@@ -293,7 +285,7 @@
       "block": null,
       "links": [
         {
-          "text": "Threads, memory, attachments, and headless UI - Angular",
+          "text": "Headless Threads - Angular",
           "clip": "AG2-angular-09-ThreadsMemoryHeadless",
           "loom": "https://www.loom.com/share/9cf3d686338a46d6be29cd24546da253",
           "narration": null,
