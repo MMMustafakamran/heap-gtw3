@@ -5,7 +5,6 @@ import {
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideCopilotKit } from '@copilotkit/angular';
-import { basicCatalog } from '@copilotkit/angular/a2ui'; // HARNESS: catalog from the Copilot Runtime page (the A2UI page's productCatalog is never defined, FINDINGS.md #2)
 
 import { routes } from './app.routes';
 
@@ -38,7 +37,6 @@ export const appConfig: ApplicationConfig = {
       runtimeUrl: 'http://localhost:8240/api/copilotkit', // HARNESS: doc says :8200, runtime runs on 8240 (workspace port plan)
       // a2ui : recover incomplete streams start
       a2ui: {
-        catalog: basicCatalog, // HARNESS: the Copilot Runtime page's a2ui: { catalog: basicCatalog }
         recovery: { showAfterMs: 2_000, showAfterAttempts: 2 },
       },
       // a2ui : recover incomplete streams end

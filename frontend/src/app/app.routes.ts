@@ -1,3 +1,5 @@
+import { provideCopilotKit } from '@copilotkit/angular'; // HARNESS: A2UI route provider
+import { basicCatalog } from '@copilotkit/angular/a2ui'; // HARNESS: A2UI route catalog
 import { Routes } from '@angular/router';
 
 import { AppChrome } from './components/app-chrome';
@@ -54,6 +56,15 @@ export const routes: Routes = [
   {
     path: 'a2ui/demo',
     loadComponent: () => import('./pages/demos').then((m) => m.A2uiDemo),
+    // HARNESS: A2UI page only. Its productCatalog is never defined (FINDINGS.md #2); the Copilot Runtime
+    // page's a2ui: { catalog: basicCatalog } is used instead. Scoped to this route so the Components and
+    // surfaces demos keep the app as published (no catalog).
+    providers: [
+      provideCopilotKit({
+        runtimeUrl: 'http://localhost:8240/api/copilotkit',
+        a2ui: { catalog: basicCatalog, recovery: { showAfterMs: 2_000, showAfterAttempts: 2 } },
+      }),
+    ],
   },
   {
     path: 'voice-multimodal/demo',

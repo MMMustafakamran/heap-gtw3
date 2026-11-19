@@ -287,7 +287,9 @@
       "reachable": "sidebar",
       "status": "✅",
       "findings": [],
-      "notes": [],
+      "notes": [
+        "Note: the thread list needs CopilotKit Intelligence on the runtime; the page doesn't say so or show the runtime code."
+      ],
       "block": null,
       "links": [
         {
