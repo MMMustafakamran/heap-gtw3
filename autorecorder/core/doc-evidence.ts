@@ -1,6 +1,8 @@
 import { type Locator, type Page } from 'playwright';
+import { isFast } from './fast';
 import { getGlobalCursorPos, humanGlide, idleNudge, sleep } from './overlays/cursor';
 import { checkpoint, mark, probeText } from './timeline';
+import { voiceGate } from './voice';
 
 /**
  * Doc evidence in the doc step (error clips: doc → highlight → IDE → demo → Notepad).
@@ -48,20 +50,26 @@ export function docEvidenceFor(id: string, own?: DocEvidenceItem[]): DocEvidence
 
 /** Highlight each item on the doc page as it is now (no navigation). Non-fatal. */
 export async function highlightDocEvidence(page: Page, items: DocEvidenceItem[]): Promise<void> {
-  if (!items.length) return;
+  if (!items.length || isFast()) return;
   console.log(`   🔎 Highlighting the faulty doc text (${items.length} spot(s))...`);
   for (const item of items) {
     try {
-      mark('evidence', item.text);
+      // A selection left from the doc tour or the previous spot must not show under this line.
+      await page.evaluate(() => window.getSelection()?.removeAllRanges()).catch(() => {});
       if (item.clickTab) await clickDocTab(page, item.clickTab);
       const target = await findEvidence(page, item.text);
       void checkpoint('evidence', `doc shows "${item.text}"`, () => (target ? probeText(target) : null));
       if (!target) {
+        await voiceGate('evidence');
+        mark('evidence', item.text);
         console.warn(`   ⚠️ Evidence not found on the doc page: "${item.text}"`);
         continue;
       }
       if (item.caption) console.log(`   👉 ${item.caption}`);
       await wheelIntoView(page, target, item.text);
+      // Mark when the faulty text is on screen, so the evidence line starts with the highlight.
+      await voiceGate('evidence');
+      mark('evidence', item.text);
       await dragSelect(page, target, item.text);
       for (let i = 0; i < 4; i++) {
         await sleep(900);
