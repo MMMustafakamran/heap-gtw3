@@ -1,0 +1,9 @@
+{
+ "text": "Moving on to the demo. After chatting, the drawer should list the thread, but umm, it's just an empty panel, no list and no lock.",
+ "model": "s2.1-pro-free",
+ "refSha256": "2c9d0ecf4608feacc07c88e869cd4dec601481306a939b7be92fc1bff521a727",
+ "duration": 10.031,
+ "file": "5194c361ca6e02cb7e6c3edcd6d2f976.mp3",
+ "clip": "AG2-angular-25-ThreadsDrawer",
+ "at": "demo"
+}

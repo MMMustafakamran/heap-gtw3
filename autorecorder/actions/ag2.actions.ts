@@ -47,6 +47,9 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'from ._state import publish_state', caption: '_state is never shown either', clickTab: 'Code' },
     { text: 'registerRenderToolCall(subAgentRendererConfig(name));', caption: 'subAgentRendererConfig / readDelegations are never defined' },
   ],
+  'threads-drawer': [
+    { text: 'shows its locked state when that feature is unavailable', caption: 'Neither a list nor the locked state shows; nothing says what serves the list (FINDINGS.md #18)' },
+  ],
   // Components and surfaces pages (Angular tab; the doc opens on it via docStorage). FINDINGS.md #14-#16.
   'cmp-components': [
     { text: 'import { provideGenerativeUI, standardUI } from "@copilotkit/angular/generative-ui";', caption: 'The entry point is not in @copilotkit/angular 0.6.0: TS2307 (FINDINGS.md #14)' },
@@ -77,6 +80,12 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'provideGenerativeUI({ ui: standardUI }),', caption: 'Tool transport: the provider from the missing entry point (FINDINGS.md #14)' },
     { text: 'provideGenerativeUI({ ui: standardUI, transport: "markdown" }),', caption: 'Markdown transport: same provider' },
   ],
+  'threads-drawer': [
+    "page says the drawer lists ur threads or shows a locked state when the threads feature isnt there",
+    "after chatting the drawer is just an empty panel,no list no lock",
+    "page never says what serves the thread list or that u need intelligence for it",
+  ].join('
+'),
   'cmp-markdown-mode': [
     { text: 'import { provideGenerativeUI, standardUI } from "@copilotkit/angular/generative-ui";', caption: 'TS2307 (FINDINGS.md #14)' },
     { text: 'provideGenerativeUI({ ui: standardUI, transport: "markdown" }),', caption: 'Markdown mode is this one option on that provider' },

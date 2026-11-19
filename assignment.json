@@ -196,12 +196,12 @@
       "child": false,
       "docPath": "voice",
       "reachable": "sidebar",
-      "status": "⚠️",
+      "status": "❌",
       "findings": [
         3
       ],
       "notes": [
-        "Note: attachments work, but the voice backend setup link points to a missing #backend anchor on the same page, so there's no transcription and no mic."
+        "Issue: the voice backend setup link points to a missing #backend anchor, so there's no transcription service and no mic; the page's tool renderer also uses WeatherCardComponent, which it never defines."
       ],
       "block": null,
       "links": [
@@ -378,7 +378,7 @@
         5
       ],
       "notes": [
-        "Issue: the agent file imports _loop_cap and _state, which the page never shows (ModuleNotFoundError), and the Code tab's frontend is React, not Angular."
+        "Issue: the agent file imports _loop_cap and _state, which the page never shows (ModuleNotFoundError), and the frontend code (Code tab and the new agent.subscribe step) is React, not Angular."
       ],
       "block": null,
       "links": [
@@ -727,9 +727,13 @@
       "child": false,
       "docPath": "multimodal-attachments",
       "reachable": "sidebar",
-      "status": "?",
-      "findings": [],
-      "notes": [],
+      "status": "✅",
+      "findings": [
+        19
+      ],
+      "notes": [
+        "Note: SampleSpec and MediaAgentMessage in createMultimodalMessage are never defined; attachments work."
+      ],
       "block": null,
       "review": {
         "verdict": null,
@@ -746,7 +750,7 @@
       "child": false,
       "docPath": "shared-state/agent-readonly",
       "reachable": "sidebar",
-      "status": "?",
+      "status": "✅",
       "findings": [],
       "notes": [],
       "block": null,
@@ -765,9 +769,13 @@
       "child": false,
       "docPath": "prebuilt-components/copilot-threads-drawer",
       "reachable": "sidebar",
-      "status": "?",
-      "findings": [],
-      "notes": [],
+      "status": "❌",
+      "findings": [
+        18
+      ],
+      "notes": [
+        "Issue: the threads drawer renders an empty panel, no thread list and no locked state; the page never says what serves the list or that Intelligence is needed."
+      ],
       "block": null,
       "review": {
         "verdict": null,
