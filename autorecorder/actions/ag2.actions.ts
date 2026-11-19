@@ -264,7 +264,9 @@ export const runVoiceAction: PageActionHandler = async (page, config, _root, ctx
     mark('action', 'mic on, phrase played');
     await glideClick(page, mic.first());
     await sleep(clipMs + 1200);
-    await glideClick(page, mic.first());
+    // While recording, the composer swaps the mic for Cancel / Finish (chatInputToolbarFinishTranscribeButtonLabel).
+    const finish = page.getByRole('button', { name: /^finish$/i }).or(page.locator('button[title="Finish" i], button[aria-label="Finish" i]')).first();
+    await glideClick(page, finish);
     let said = '';
     for (let i = 0; i < 40 && !/tokyo|weather/i.test(said); i++) {
       await sleep(500);
