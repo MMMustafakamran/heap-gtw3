@@ -186,7 +186,7 @@ export const PAGES = definePages([
     route: 'auth',
     ideFile: 'frontend/auth-runtime.ts',
     startLine: 1,
-    endLine: 48,
+    endLine: 43,
     extraTabs: [{ filePath: 'frontend/src/app/features/auth/auth-chat.component.ts', startLine: 13, endLine: 62 }, PKG],
     prompt: 'Hi! Give me one quick tip for writing clearer emails.',
     waitAfterPromptMs: 3000,

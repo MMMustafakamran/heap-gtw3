@@ -80,12 +80,6 @@ export const FINDING_EVIDENCE: Record<string, DocEvidence[]> = {
     { text: 'provideGenerativeUI({ ui: standardUI }),', caption: 'Tool transport: the provider from the missing entry point (FINDINGS.md #14)' },
     { text: 'provideGenerativeUI({ ui: standardUI, transport: "markdown" }),', caption: 'Markdown transport: same provider' },
   ],
-  'threads-drawer': [
-    "page says the drawer lists ur threads or shows a locked state when the threads feature isnt there",
-    "after chatting the drawer is just an empty panel,no list no lock",
-    "page never says what serves the thread list or that u need intelligence for it",
-  ].join('
-'),
   'cmp-markdown-mode': [
     { text: 'import { provideGenerativeUI, standardUI } from "@copilotkit/angular/generative-ui";', caption: 'TS2307 (FINDINGS.md #14)' },
     { text: 'provideGenerativeUI({ ui: standardUI, transport: "markdown" }),', caption: 'Markdown mode is this one option on that provider' },
@@ -180,6 +174,11 @@ export const FINDING_NOTES: Record<string, string> = {
     "page says turn on markdown mode with transport markdown on provideGenerativeUI",
     "no a2ui blocks rendered, agent just wrote html code as text",
     "provideGenerativeUI is from @copilotkit/angular/generative-ui, that entry point isnt in the latest @copilotkit/angular on npm,cannot find module so ng serve wont build",
+  ].join('\n'),
+  'threads-drawer': [
+    "page says the drawer lists ur threads or shows a locked state when the threads feature isnt there",
+    "after chatting the drawer is just an empty panel,no list no lock",
+    "page never says what serves the thread list or that u need intelligence for it",
   ].join('\n'),
   'cmp-from-a2ui': [
     "page says move ur a2ui catalog to the new engine with createGenerativeUI",
