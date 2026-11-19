@@ -52,16 +52,16 @@
         11
       ],
       "notes": [
-        "Note: the backend step is only a callout. The AG2 agent is on the AG2 quickstart (/ag2/quickstart, Connect your own AG2 agent), the Node runtime server.ts on the Angular quickstart (/angular), and the HttpAgent binding on the Copilot Runtime page; @ag-ui/client is not in the install step."
+        "Note: backend step is just a callout; AG2 agent, server.ts and HttpAgent are on other pages (AG2 quickstart, Angular quickstart, Copilot Runtime)."
       ],
       "block": null,
       "links": [
         {
-          "text": "Quickstart - Angular",
+          "text": "Angular - Angular",
           "clip": "AG2-angular-01-Quickstart",
-          "loom": "https://www.loom.com/share/bc9c737d83374356927a60cb2508e656",
+          "loom": "https://www.loom.com/share/438973e4c7a5486cbf09c670d2298e1a",
           "narration": null,
-          "filmed": "2026-11-16"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -86,9 +86,9 @@
         {
           "text": "Prebuilt Components - Angular",
           "clip": "AG2-angular-02-ChatUi",
-          "loom": "https://www.loom.com/share/3d9729f3b5b3442ba2fd9f3913df98a8",
+          "loom": "https://www.loom.com/share/be40fc0b48244ccdb7b7f7be733c97e3",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -110,16 +110,16 @@
         7
       ],
       "notes": [
-        "Note: the browser getWeather tool calls /api/weather, which no page shows."
+        "Note: getWeather calls /api/weather, never shown."
       ],
       "block": null,
       "links": [
         {
           "text": "Frontend Tools - Angular",
           "clip": "AG2-angular-03-FrontendToolsGenerativeUi",
-          "loom": "https://www.loom.com/share/fbd18938588642a18bb14b9cbdc68aea",
+          "loom": "https://www.loom.com/share/730e9cd5609145feb50edb9e1adeb280",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -139,7 +139,7 @@
       "status": "N/A",
       "findings": [],
       "notes": [
-        "Note: overview page with links only, no code to test (2026-11-19)."
+        "Note: overview page, no code to test."
       ],
       "block": null,
       "links": [],
@@ -162,16 +162,16 @@
         2
       ],
       "notes": [
-        "Note: productCatalog and dynamicString are never defined; the page's createAngularCatalog(..., { includeBasicCatalog: true }) or basicCatalog from @copilotkit/angular/a2ui (shown on the Copilot Runtime page) gives a catalog."
+        "Note: productCatalog is never defined; basicCatalog from the Copilot Runtime page works."
       ],
       "block": null,
       "links": [
         {
           "text": "A2UI - Angular",
           "clip": "AG2-angular-05-A2ui",
-          "loom": "https://www.loom.com/share/f9a3f0b83f5c4e23972b80d61c3e8f12",
+          "loom": "https://www.loom.com/share/d9c0e34d2c80494090059d29f2fc4942",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -193,16 +193,16 @@
         3
       ],
       "notes": [
-        "Note: the voice backend setup link goes to the generic Voice page, which shows the runtime only as a Next.js route; its transcription service works on the Node runtime."
+        "Note: voice setup link goes to the generic Voice page (Next.js route only); works on the Node runtime."
       ],
       "block": null,
       "links": [
         {
           "text": "Voice - Angular",
           "clip": "AG2-angular-06-VoiceMultimodal",
-          "loom": "https://www.loom.com/share/7bd699ec98c4401885e20af47a2cf56e",
+          "loom": "https://www.loom.com/share/389da9c6d7914c468f4f8f8e0488c4e8",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -227,9 +227,9 @@
         {
           "text": "HITL Overview - Angular",
           "clip": "AG2-angular-07-HumanInTheLoop",
-          "loom": "https://www.loom.com/share/ba0daede65ed4a779aa98fa92902cfb1",
+          "loom": "https://www.loom.com/share/d01f1b45dd2a4dbab95988099db8d46c",
           "narration": null,
-          "filmed": "2026-11-11"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -251,16 +251,16 @@
         4
       ],
       "notes": [
-        "Issue: the agent can't read the state the app writes with agent.setState (asked for the priority, it says it has none); the page never shows how an AG2 agent reads that state."
+        "Issue: the agent never sees state set with agent.setState; no AG2 code shows how to read it."
       ],
       "block": null,
       "links": [
         {
           "text": "Issue",
           "clip": "AG2-angular-08-SharedState",
-          "loom": "https://www.loom.com/share/55a24389c3bc44bcbdfc5113b550abb8",
+          "loom": "https://www.loom.com/share/7104d3a512d042fda0841a416a35dc1c",
           "narration": "narration/scripts/AG2-angular-08-SharedState.json",
-          "filmed": "2026-11-11"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -280,16 +280,16 @@
       "status": "✅",
       "findings": [],
       "notes": [
-        "Note: the thread list needs CopilotKit Intelligence on the runtime; the page doesn't say so or show the runtime code."
+        "Note: needs CopilotKit Intelligence on the runtime; page doesn't say so."
       ],
       "block": null,
       "links": [
         {
           "text": "Headless Threads - Angular",
           "clip": "AG2-angular-09-ThreadsMemoryHeadless",
-          "loom": "https://www.loom.com/share/9cf3d686338a46d6be29cd24546da253",
+          "loom": "https://www.loom.com/share/68f48f82289d4f88b96c1df4eb3071f3",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -311,16 +311,16 @@
         9
       ],
       "notes": [
-        "Note: searchOrders is never defined (TS2304); with a small helper the tool registers on document.modelContext."
+        "Note: searchOrders is never defined."
       ],
       "block": null,
       "links": [
         {
           "text": "WebMCP - Angular",
           "clip": "AG2-angular-10-WebMcp",
-          "loom": "https://www.loom.com/share/c5a8d250aa5d4d22b59a27e222297626",
+          "loom": "https://www.loom.com/share/dde764cc4dda41cdb69ecaa034ce38d7",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -342,15 +342,16 @@
         10
       ],
       "notes": [
-        "Note: readSessionToken and verifySession are never defined; with small helpers the onRequest hook works (401 signed out, reply signed in)."
+        "Note: readSessionToken and verifySession are never defined."
       ],
       "block": null,
       "links": [
         {
           "text": "Authentication - Angular",
           "clip": "AG2-angular-11-Authentication",
-          "loom": "https://www.loom.com/share/db2e9d10f9d74c859efe3c6092883a78",
-          "filmed": "2026-11-11"
+          "loom": "https://www.loom.com/share/0da2802d6d1743379fa0dd5b5d3a9d8b",
+          "filmed": "2026-11-19",
+          "narration": null
         }
       ],
       "review": {
@@ -372,16 +373,16 @@
         5
       ],
       "notes": [
-        "Issue: the agent file imports _loop_cap and _state, which the page never shows (ModuleNotFoundError), and the frontend code (Code tab and the new agent.subscribe step) is React, not Angular."
+        "Issue: agent imports _loop_cap and _state, never shown (ModuleNotFoundError); frontend code is React only."
       ],
       "block": null,
       "links": [
         {
           "text": "Not Working",
           "clip": "AG2-angular-12-SubAgents",
-          "loom": "https://www.loom.com/share/0c8847ff8fd84ec59b1c7d73d7952145",
+          "loom": "https://www.loom.com/share/2cc9512ba65f4d85b939314c24688a91",
           "narration": "narration/scripts/AG2-angular-12-SubAgents.json",
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -408,9 +409,9 @@
         {
           "text": "Inspector - Angular",
           "clip": "AG2-angular-13-Inspector",
-          "loom": "https://www.loom.com/share/9ec0410449ed4beab592418e32660261",
+          "loom": "https://www.loom.com/share/c243da2bed854cd2825cc5c254d281e3",
           "narration": null,
-          "filmed": "2026-11-09"
+          "filmed": "2026-11-19"
         }
       ],
       "review": {
@@ -433,8 +434,7 @@
         15
       ],
       "notes": [
-        "Issue: the page's Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build; and the Try it runtime never replies (server.ts won't start under tsx in an Angular app, then every run fails with \"chat() needs a threadId\").",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build; the Try it runtime never replies (\"chat() needs a threadId\")."
       ],
       "block": null,
       "links": [
@@ -466,8 +466,7 @@
         16
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -499,8 +498,7 @@
         16
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -532,8 +530,7 @@
         16
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -565,8 +562,7 @@
         16
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -597,8 +593,7 @@
         14
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -629,8 +624,7 @@
         14
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -661,8 +655,7 @@
         14
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -694,8 +687,7 @@
         16
       ],
       "notes": [
-        "Issue: the Angular code imports @copilotkit/angular/generative-ui, which the latest package (0.6.0) doesn't have, so the app won't build and no generated UI renders.",
-        "Note: Angular tab on the /ag2 Declarative pages, announced by the team."
+        "Issue: imports @copilotkit/angular/generative-ui, missing in the latest package (0.6.0), so the app won't build and nothing renders."
       ],
       "block": null,
       "links": [
@@ -726,7 +718,7 @@
         19
       ],
       "notes": [
-        "Note: SampleSpec and MediaAgentMessage in createMultimodalMessage are never defined; attachments work."
+        "Note: SampleSpec and MediaAgentMessage are never defined."
       ],
       "block": null,
       "review": {
@@ -734,7 +726,15 @@
         "approvedAt": null,
         "by": null
       },
-      "links": []
+      "links": [
+        {
+          "clip": "AG2-angular-23-MultimodalAttachments",
+          "loom": "https://www.loom.com/share/ea495bbd965c40eb810d9bdcd64929f8",
+          "filmed": "2026-11-19",
+          "text": "Multimodal Attachments - Angular",
+          "narration": null
+        }
+      ]
     },
     {
       "id": "agent-readonly",
@@ -753,7 +753,15 @@
         "approvedAt": null,
         "by": null
       },
-      "links": []
+      "links": [
+        {
+          "clip": "AG2-angular-24-AgentReadonly",
+          "loom": "https://www.loom.com/share/23259f62a68247a491b2e49733efd623",
+          "filmed": "2026-11-19",
+          "text": "Agent Read-Only Context - Angular",
+          "narration": null
+        }
+      ]
     },
     {
       "id": "threads-drawer",
@@ -768,7 +776,7 @@
         18
       ],
       "notes": [
-        "Note: the drawer lists threads only with CopilotKit Intelligence on the runtime; the page doesn't say so or show the runtime code."
+        "Note: needs CopilotKit Intelligence on the runtime; page doesn't say so."
       ],
       "block": null,
       "review": {
