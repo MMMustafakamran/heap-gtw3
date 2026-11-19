@@ -233,14 +233,29 @@ export async function humanScrollDown(
   // Resolve the scroller once and stash it, so every tick moves the same element.
   const actualTarget = (await page
     .evaluate(({ requestedPixels, toBottom }) => {
-      const candidates = [
+      // Docs renamed their layout id (nd-docs-layout -> fd-spacious-layout, 2026-11). Try the
+      // known ids, then fall back to the tallest element that actually scrolls, so a rename
+      // never again leaves the skim inching 300 px at a time.
+      const scrolls = (el: Element | null): el is HTMLElement => {
+        if (!(el instanceof HTMLElement) || el.scrollHeight <= el.clientHeight + 40) return false;
+        const oy = getComputedStyle(el).overflowY;
+        return oy === 'auto' || oy === 'scroll' || oy === 'overlay';
+      };
+      const known = [
+        document.getElementById('fd-spacious-layout'),
         document.getElementById('nd-docs-layout'),
         document.querySelector('main'),
         document.querySelector('article'),
-      ];
-      const nested = candidates.find(
-        (el) => el instanceof HTMLElement && el.scrollHeight > el.clientHeight + 40,
-      ) as HTMLElement | undefined;
+      ].find(scrolls);
+      let nested: HTMLElement | undefined = known ?? undefined;
+      if (!nested) {
+        let best = 0;
+        for (const el of Array.from(document.querySelectorAll('body *'))) {
+          if (!scrolls(el) || el.clientHeight < window.innerHeight * 0.5) continue;
+          const room = el.scrollHeight - el.clientHeight;
+          if (room > best) { best = room; nested = el; }
+        }
+      }
 
       (window as any).__autorecordScroller = nested ?? null;
 
