@@ -2,8 +2,9 @@ import { type Page } from 'playwright';
 import { PROJECT, demoUrlFor, docUrlFor } from '../config/project.config';
 import { type ServiceDefinition } from './cli/service';
 import { type IdeTabConfig } from './ide/generator';
+import { type ExpectUi } from './ui-log';
 
-export { type IdeTabConfig };
+export { type IdeTabConfig, type ExpectUi };
 
 /**
  * A dev server this page's demo needs, and which the recording shows starting.
@@ -144,6 +145,14 @@ export interface PageDefinition {
    */
   docStorage?: Record<string, string>;
 
+  /**
+   * Voice pages: a wav (path relative to `autorecorder/`) played as the browser's microphone, so
+   * the demo clicks the real mic button and speaks the prompt. Only this page's take gets a
+   * Chromium launched with fake-media flags and microphone permission; every other page keeps
+   * the shared browser and its launch flags unchanged.
+   */
+  fakeMicWav?: string;
+
   /** Per-page overrides of the recorder's fixed waits. See `RecorderTimeouts`. */
   timeouts?: Partial<RecorderTimeouts>;
 
@@ -155,6 +164,14 @@ export interface PageDefinition {
    * button-first flow).
    */
   demo?: DemoScript;
+
+  /**
+   * UI the page should show once the agent has answered (owner, 2026-11-25). Checked when the reply
+   * finishes and again when the page action ends; one checkpoint `ui:<name>` each (ok / false, with
+   * the time it was first seen and a keyframe). `expectUiFor('interrupt')` etc. give templates
+   * (core/ui-log.ts). Logging only: a miss is a failed checkpoint, the take still films.
+   */
+  expectUi?: ExpectUi[];
 }
 
 /** A place to rest the cursor: a selector (first visible match) or fixed coordinates. */

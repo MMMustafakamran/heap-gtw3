@@ -58,3 +58,27 @@ a90e6c15a2bb65d0  timeline.ts
 51d6e0658a5b2dfa  engine.ts
 # doctor.ts before the Angular route-check skip (2026-11-18)
 f0507d947a0222fa  doctor.ts
+a81d07b94e712282  engine.ts
+71de5852d2a65d8a  types.ts
+7a4c96cbe31c7307  doc-evidence.ts
+# before the auto VERSIONS.md IDE tab (2026-11-24)
+d4c8d7ebd60baa5e  engine.ts
+8473a180a317d262  ide/generator.ts
+# before key-moment step/ui log, ADDED blocks, expectUi (2026-11-25)
+ecdccd69156db179  actions.ts
+a83be1bdf5fa34bd  engine.ts
+9bdc0e81cb08d76f  timeline.ts
+10dd813d5e3176d3  types.ts
+ff299a7d49cc27a8  ide/generator.ts
+c4fc52975ae593f1  overlays/cursor.ts
+6eacd21cc8bcf864  voice.ts
+# 2026-11-25 first key-moment version (f074c49)
+9d5cd92477241a80  ui-log.ts
+36b42a55f2cde7d1  overlays/cursor.ts
+9fdf8f175d8e1d1f  actions.ts
+1e0f3f5aedc15b9e  engine.ts
+042a4bb758545743  timeline.ts
+f755c04b29da86db  code-tags.ts
+1e0f3f5aedc15b9e  engine.ts
+67332d4681cc751a  ui-log.ts
+3365a8f9e36b6bb3  voice.ts

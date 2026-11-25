@@ -13,7 +13,7 @@ The harness exists to show doc defects. Any fix that hides one defeats the purpo
 ## 2. HARNESS changes (the only allowed edits)
 
 - Allowed only when needed to reach a page at all: ports, agent registration, missing helper files the doc never shows.
-- Mark every such line or file with a `HARNESS` comment saying what was changed and why.
+- Mark every such line or file with a comment saying what was changed and why. **Tags (owner, 2026-11-25):** `ADDED:` for code the doc never gives that the page needs to run at all (a missing helper, file, agent or stand-in: the recorder highlights it and the narration says it wasn't on the page), `CHANGED:` for wiring (agent ids, ports, URLs, config: never highlighted, never voiced). Comment forms `// ADDED:`, `# ADDED:`, `/* ADDED:`, `{/* ADDED:`, `<!-- ADDED:` (same for `CHANGED:`). Plain `HARNESS` is the legacy tag: still valid, but it is neither highlighted nor counted as added code.
 - A harness workaround that makes a broken page work is evidence, not a fix: keep the verbatim version too, and the finding still stands.
 
 ## 3. Ambiguity is a defect
@@ -110,6 +110,7 @@ We test as the human reviewer the company asked for: we were given the docs link
 | `none` | Exists at a real URL, but nothing in the docs links to it: found only by guessing URLs, the `.md` export, `llms.txt`, a sitemap or automated crawling | **No.** Don't record, don't report, don't log findings for it. |
 
 - **Out of scope by the owner's decision (2026-11-08), even when in the sidebar:** Intelligence pages (`intelligence/*`), Backend pages (`backend/*`) and Deploy pages (`deploy/*`, `deploy-*`). Don't add them to `assignment.json`, don't record, don't report.
+- **Backend = the sidebar's Backend section, not just the URL (owner, 2026-11-23).** Any page under the **Backend** heading of the live docs sidebar (`doc-snapshot/sidebar-order.json`) is out of scope, even when its URL doesn't start with `backend/` (e.g. Inspector, VS Code Extension, Authentication). Mark it `excluded` in `assignment.json`: no CI recording, no report row, no findings. `build.py` also skips any row whose sidebar group starts with Backend.
 - Doc changes and new package versions: [DRIFT.md](DRIFT.md). CI holds pages whose doc changed and installs what a new reader gets today.
 - Automated fetching (drift check, `.md` export) is an internal tool only. A page it discovers counts only once it is in the sidebar or linked from a reachable page's content.
 - CI records only `sidebar` + `in-content` pages that are not `excluded`, in parallel shards: 5 by default, 15 for LangGraph React (public repos: Actions minutes are free, up to 20 jobs at once). Shards are balanced by each page's recording time from the previous run (`page-durations.json`, kept in the Actions cache).
